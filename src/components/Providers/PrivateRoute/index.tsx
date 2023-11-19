@@ -6,7 +6,7 @@ import { checkUserAuthenticated } from 'functions/check-user-authenticated';
 
 import { PrivateRouteProps } from '../type';
 
-export const Encapsulation = ({ children }: PrivateRouteProps) => {
+export const PrivateRoute = ({ children }: PrivateRouteProps) => {
 	const { push } = useRouter();
 
 	const isUserAuthenticated = checkUserAuthenticated();

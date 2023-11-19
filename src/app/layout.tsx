@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import { PrivateRoute } from 'components/PrivateRoute';
+import { Providers } from 'components/Providers';
 
 import 'styles/globals.css';
 
@@ -22,7 +22,7 @@ export default function RootLayout({
 	return (
 		<html lang="pt-BR">
 			<body className={inter.className}>
-				<PrivateRoute>{children}</PrivateRoute>
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	);
