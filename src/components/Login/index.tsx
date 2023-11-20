@@ -1,14 +1,17 @@
 'use client';
+import NextLink from 'next/link';
+import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import {
-	Box,
+	Flex,
 	Heading,
 	FormControl,
 	FormLabel,
 	Input,
 	Button,
 	Text,
+	Link,
 	useToast
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -25,6 +28,7 @@ const LoginFormSchema = yup.object().shape({
 
 export const LoginPage = () => {
 	const toast = useToast();
+	const [isLoading, setIsLoading] = useState(false);
 
 	const {
 		register,
@@ -33,6 +37,7 @@ export const LoginPage = () => {
 	} = useForm<LoginFormProps>({ resolver: yupResolver(LoginFormSchema) });
 
 	const submitForm: SubmitHandler<LoginFormProps> = ({ email, password }) => {
+		setIsLoading(true);
 		api.post('/auth/login', { email, password })
 			.then((response) => {
 				setCookie(
@@ -46,12 +51,16 @@ export const LoginPage = () => {
 			})
 			.catch((error) => {
 				toast({
-					title: 'Erro ao fazer login',
+					title: 'Erro ao realizar login',
 					description: error.message,
 					status: 'error',
+					position: 'top',
 					duration: 5000,
 					isClosable: true
 				});
+			})
+			.finally(() => {
+				setIsLoading(false);
 			});
 	};
 
@@ -59,10 +68,10 @@ export const LoginPage = () => {
 	// destroyCookie(undefined, 'portal-jogos.token');
 
 	return (
-		<Box
-			display="flex"
+		<Flex
 			justifyContent="center"
 			alignItems="center"
+			width="100%"
 			height="100vh"
 			flexDir="column"
 			bg="linear-gradient(180deg, #25167b 0%, #010101 100%)"
@@ -71,11 +80,11 @@ export const LoginPage = () => {
 			<Heading
 				color="#f5f5f5"
 				fontSize={{
-					base: '26',
-					sm: '60',
-					md: '60',
-					lg: '72',
-					xl: '72'
+					base: '1.625rem',
+					sm: '3.75rem',
+					md: '3.75rem',
+					lg: '5rem',
+					xl: '5rem'
 				}}
 				// mb={4}
 				textAlign="center"
@@ -84,19 +93,17 @@ export const LoginPage = () => {
 			>
 				Faça seu login
 			</Heading>
-			<Box
-				width={{
-					base: '100vw',
-					sm: '100vw',
-					md: '50vw',
-					lg: '40vw',
-					xl: '25vw'
-				}}
-				// p={8}
-				borderRadius={8}
-				boxShadow="lg"
-			>
-				<form action="" onSubmit={handleSubmit(submitForm)}>
+			<form action="" onSubmit={handleSubmit(submitForm)}>
+				<Flex
+					flexDir="column"
+					width={{
+						base: '80vw',
+						sm: '80vw',
+						md: '50vw',
+						lg: '40vw',
+						xl: '25vw'
+					}}
+				>
 					<FormControl>
 						<FormLabel color="#f5f5f5">Email</FormLabel>
 						<Input
@@ -129,17 +136,49 @@ export const LoginPage = () => {
 							</Text>
 						) : null}
 					</FormControl>
-					<Button
-						isLoading
-						mt={6}
-						type="submit"
-						colorScheme="red"
-						width="100%"
+					<Link
+						alignSelf="flex-end	"
+						as={NextLink}
+						href="/forget-password"
+						color="white"
+						_hover={{ textDecoration: 'underline #C329FF' }}
 					>
-						Entrar
-					</Button>
-				</form>
-			</Box>
-		</Box>
+						Esqueci minha senha
+					</Link>
+					{isLoading == true ? (
+						<Button
+							isLoading
+							mt={6}
+							type="submit"
+							colorScheme="purple"
+							width="100%"
+							rounded="xl"
+							fontSize="1.5rem"
+						>
+							Entrar
+						</Button>
+					) : (
+						<Button
+							mt={6}
+							type="submit"
+							colorScheme="purple"
+							width="100%"
+							rounded="xl"
+							fontSize="1.5rem"
+						>
+							Entrar
+						</Button>
+					)}
+				</Flex>
+			</form>
+			<Link
+				as={NextLink}
+				href="/register"
+				color="white"
+				_hover={{ textDecoration: 'underline #B530F3' }}
+			>
+				Esqueci minha senha
+			</Link>
+		</Flex>
 	);
 };
