@@ -9,8 +9,6 @@ import { checkIsPublicRoute } from 'functions/check-is-public-route';
 import { PrivateRoute } from './PrivateRoute';
 import { PrivateRouteProps } from './type';
 
-import 'react-toastify/dist/ReactToastify.css';
-
 export const Providers = ({ children }: PrivateRouteProps) => {
 	const pathname = usePathname();
 
