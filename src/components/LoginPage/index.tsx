@@ -69,16 +69,16 @@ export const LoginPage = () => {
 
 	return (
 		<Flex
-			justifyContent="center"
-			alignItems="center"
-			width="100%"
-			height="100vh"
-			flexDir="column"
-			bg="linear-gradient(180deg, #25167b 0%, #010101 100%)"
-			gap="10"
+			justifyContent={'center'}
+			alignItems={'center'}
+			width={'100%'}
+			minHeight={'100vh'}
+			flexDir={'column'}
+			bg={'linear-gradient(180deg, #25167b 0%, #010101 100%)'}
+			gap={'10'}
 		>
 			<Heading
-				color="#f5f5f5"
+				color={'#f5f5f5'}
 				fontSize={{
 					base: '1.625rem',
 					sm: '3.75rem',
@@ -87,15 +87,15 @@ export const LoginPage = () => {
 					xl: '5rem'
 				}}
 				// mb={4}
-				textAlign="center"
+				textAlign={'center'}
 				paddingBottom={2}
-				borderBottom="5px solid #C329FF"
+				borderBottom={'5px solid #C329FF'}
 			>
 				Faça seu login
 			</Heading>
 			<form action="" onSubmit={handleSubmit(submitForm)}>
 				<Flex
-					flexDir="column"
+					flexDir={'column'}
 					width={{
 						base: '80vw',
 						sm: '80vw',
@@ -105,42 +105,42 @@ export const LoginPage = () => {
 					}}
 				>
 					<FormControl>
-						<FormLabel color="#f5f5f5">Email</FormLabel>
+						<FormLabel color={'#f5f5f5'}>Email</FormLabel>
 						<Input
-							type="email"
-							color="#f5f5f5"
-							placeholder="Digite seu email"
+							type={'email'}
+							color={'#f5f5f5'}
+							placeholder={'Digite seu email'}
 							_focus={{ borderColor: '#F000AD' }}
 							{...register('email')}
 						/>
 						{errors.email?.message ? (
-							<Text as="b" color="red">
+							<Text as={'b'} color={'red'}>
 								{errors.email.message}
 							</Text>
 						) : null}
 					</FormControl>
 					<FormControl>
-						<FormLabel mt={4} color="#f5f5f5">
+						<FormLabel mt={4} color={'#f5f5f5'}>
 							Senha
 						</FormLabel>
 						<Input
-							type="password"
-							color="#f5f5f5"
-							placeholder="Digite sua senha"
+							type={'password'}
+							color={'#f5f5f5'}
+							placeholder={'Digite sua senha'}
 							_focus={{ borderColor: '#F000AD' }}
 							{...register('password')}
 						/>
 						{errors.password?.message ? (
-							<Text as="b" color="red">
+							<Text as={'b'} color={'red'}>
 								{errors.password.message}
 							</Text>
 						) : null}
 					</FormControl>
 					<Link
-						alignSelf="flex-end	"
+						alignSelf={'flex-end	'}
 						as={NextLink}
-						href="/forget-password"
-						color="white"
+						href={'/forget-password'}
+						color={'white'}
 						_hover={{ textDecoration: 'underline #C329FF' }}
 					>
 						Esqueci minha senha
@@ -149,22 +149,22 @@ export const LoginPage = () => {
 						<Button
 							isLoading
 							mt={6}
-							type="submit"
-							colorScheme="purple"
-							width="100%"
-							rounded="xl"
-							fontSize="1.5rem"
+							type={'submit'}
+							colorScheme={'purple'}
+							width={'100%'}
+							rounded={'xl'}
+							fontSize={'1.5rem'}
 						>
 							Entrar
 						</Button>
 					) : (
 						<Button
 							mt={6}
-							type="submit"
-							colorScheme="purple"
-							width="100%"
-							rounded="xl"
-							fontSize="1.5rem"
+							type={'submit'}
+							colorScheme={'purple'}
+							width={'100%'}
+							rounded={'xl'}
+							fontSize={'1.5rem'}
 						>
 							Entrar
 						</Button>
@@ -173,11 +173,11 @@ export const LoginPage = () => {
 			</form>
 			<Link
 				as={NextLink}
-				href="/register"
-				color="white"
+				href={'/register'}
+				color={'white'}
 				_hover={{ textDecoration: 'underline #B530F3' }}
 			>
-				Esqueci minha senha
+				Não tem uma conta? Registre-se
 			</Link>
 		</Flex>
 	);
