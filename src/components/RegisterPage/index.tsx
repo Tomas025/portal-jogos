@@ -1,5 +1,6 @@
 'use client';
 import NextLink from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FiUser, FiMail, FiLock, FiAtSign } from 'react-icons/fi';
@@ -19,7 +20,6 @@ import {
 	Select
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { setCookie } from 'nookies';
 import { api } from 'services/api';
 import * as yup from 'yup';
 
@@ -44,6 +44,7 @@ const RegisterFormSchema = yup.object().shape({
 
 export const RegisterPage = () => {
 	const toast = useToast();
+	const { push } = useRouter();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const {
@@ -54,6 +55,10 @@ export const RegisterPage = () => {
 		resolver: yupResolver(RegisterFormSchema)
 	});
 
+	function redirect() {
+		push('/login');
+	}
+
 	const submitForm: SubmitHandler<RegisterFormProps> = ({
 		userName,
 		tagName,
@@ -62,32 +67,49 @@ export const RegisterPage = () => {
 		password
 	}) => {
 		setIsLoading(true);
+
 		api.post('/pessoas', {
 			Nome: userName,
 			Email: email,
 			Senha: password,
-			TagName: tagName,
+			Username: tagName,
 			Tipo: type
 		})
-			.then((response) => {
-				setCookie(
-					undefined,
-					'portal-jogos.token',
-					response.data.access_token,
-					{
-						maxAge: 60 * 60 * 1 // 1 hour
-					}
-				);
-			})
-			.catch((error) => {
+			.then(() => {
+				console.log('Cadastro realizado com sucesso');
 				toast({
-					title: 'Erro ao realizar login',
-					description: error.message,
-					status: 'error',
+					title: 'Cadastro realizado com sucesso',
+					description: 'Você será redirecionado para efetuar o login',
+					status: 'success',
 					position: 'top',
 					duration: 5000,
 					isClosable: true
 				});
+
+				setTimeout(redirect, 2000);
+			})
+			.catch((error) => {
+				console.log(error);
+				if (error.response.status != 409) {
+					toast({
+						title: 'Erro ao realizar login',
+						description:
+							'Ocorreu algum erro na hora de realizar o cadastro',
+						status: 'error',
+						position: 'top',
+						duration: 5000,
+						isClosable: true
+					});
+				} else {
+					toast({
+						title: 'Erro ao realizar login',
+						description: error.response.data.message,
+						status: 'error',
+						position: 'top',
+						duration: 5000,
+						isClosable: true
+					});
+				}
 			})
 			.finally(() => {
 				setIsLoading(false);
@@ -204,6 +226,7 @@ export const RegisterPage = () => {
 							appearance={'none'}
 							color={'gray'}
 							placeholder={'Escolha uma das opções'}
+							{...register('type')}
 						>
 							<option value={types.ALUNO}>Aluno</option>
 							<option value={types.CRIADOR_CONTEUDO}>

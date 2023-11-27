@@ -50,14 +50,26 @@ export const LoginPage = () => {
 				);
 			})
 			.catch((error) => {
-				toast({
-					title: 'Erro ao realizar login',
-					description: error.message,
-					status: 'error',
-					position: 'top',
-					duration: 5000,
-					isClosable: true
-				});
+				console.log(error);
+				if (error.response.data.status != 401) {
+					toast({
+						title: 'Erro ao realizar login',
+						description: 'Ocorreu algum erro ao realizar login',
+						status: 'error',
+						position: 'top',
+						duration: 5000,
+						isClosable: true
+					});
+				} else {
+					toast({
+						title: 'Erro ao realizar login',
+						description: error.response.data.message,
+						status: 'error',
+						position: 'top',
+						duration: 5000,
+						isClosable: true
+					});
+				}
 			})
 			.finally(() => {
 				setIsLoading(false);
