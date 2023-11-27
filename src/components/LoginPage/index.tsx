@@ -38,7 +38,10 @@ export const LoginPage = () => {
 
 	const submitForm: SubmitHandler<LoginFormProps> = ({ email, password }) => {
 		setIsLoading(true);
-		api.post('/auth/login', { email, password })
+		api.post('/auth/login', {
+			Email: email,
+			Password: password
+		})
 			.then((response) => {
 				setCookie(
 					undefined,
@@ -105,7 +108,7 @@ export const LoginPage = () => {
 			>
 				Faça seu login
 			</Heading>
-			<form action="" onSubmit={handleSubmit(submitForm)}>
+			<form onSubmit={handleSubmit(submitForm)}>
 				<Flex
 					flexDir={'column'}
 					width={{
