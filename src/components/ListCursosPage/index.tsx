@@ -1,11 +1,12 @@
 'use client';
 import { useState, useEffect } from 'react';
 
-import { Container } from '@chakra-ui/react';
+import CardCurso from 'components/CardCurso';
+
+import { Flex } from '@chakra-ui/react';
 // import { api } from 'services/api';
 
 import { Curso } from './type';
-import CardCurso from 'components/CardCurso';
 
 const courses: Curso[] = [
 	{
@@ -54,12 +55,18 @@ export default function ListCursosPage() {
 	}, []);
 
 	return (
-		<Container>
+		<Flex
+			width={'100vw'}
+			flexDirection={'column'}
+			justifyContent={'center'}
+			alignItems={'center'}
+			gap={4}
+		>
 			{loading && <p>Loading...</p>}
 			{error && <p>Erro ao carregar os cursos</p>}
 			{!loading && !error && (
 				<>{cursos.map((curso) => CardCurso(curso))}</>
 			)}
-		</Container>
+		</Flex>
 	);
 }
