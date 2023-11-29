@@ -12,6 +12,8 @@ import {
 	Flex,
 	FormControl,
 	FormLabel,
+	Grid,
+	GridItem,
 	Input,
 	Text,
 	Textarea
@@ -20,7 +22,7 @@ import {
 export const ProfilePage = () => {
 	return (
 		<Flex
-			justifyContent={'space-around'}
+			justifyContent={'space-evenly'}
 			width={'100%'}
 			height={'100vh'}
 			paddingY={'2%'}
@@ -29,6 +31,8 @@ export const ProfilePage = () => {
 			gap={'10%'}
 		>
 			<Flex
+				width={'20vw'}
+				height={'58vh'}
 				flexDir={'column'}
 				border={'1px solid #B530F3'}
 				alignItems={'center'}
@@ -77,44 +81,78 @@ export const ProfilePage = () => {
 					<FiTwitter fontSize={'1.5rem'} color={'#1AA2F8'} />
 				</Flex>
 			</Flex>
-			<Flex border={'1px solid #B530F3'} borderRadius={'8px'}>
-				<form>
+			<Flex
+				alignItems={'flex-start'}
+				justifyContent={'center'}
+				width={'49vw'}
+				height={'58vh'}
+				border={'1px solid #B530F3'}
+				borderRadius={'8px'}
+				padding={'4% 3% 4% 3%'}
+			>
+				<form
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						width: '100%',
+						gap: '2vh'
+					}}
+				>
 					<FormControl>
-						<FormLabel color={'white'}>Username</FormLabel>
-						<Input type="text" />
+						<FormLabel color={'white'}>Nametag</FormLabel>
+						<Input type="text" placeholder={'Digite sua Nametag'} />
 					</FormControl>
 					<FormControl>
 						<FormLabel color={'white'}>Name</FormLabel>
-						<Input type="text" />
+						<Input
+							type="text"
+							placeholder={'Digite seu nome de usuário'}
+						/>
 					</FormControl>
-					<Flex>
-						<FormControl>
-							<FormLabel color={'white'}>YouTube</FormLabel>
-							<Input type="text" />
-						</FormControl>
-						<FormControl>
-							<FormLabel color={'white'}>Discord</FormLabel>
-							<Input type="text" />
-						</FormControl>
-						<FormControl>
-							<FormLabel color={'white'}>Linkedin</FormLabel>
-							<Input type="text" />
-						</FormControl>
-						<FormControl>
-							<FormLabel color={'white'}>Instagram</FormLabel>
-							<Input type="text" />
-						</FormControl>
-						<FormControl>
-							<FormLabel color={'white'}>Github</FormLabel>
-							<Input type="text" />
-						</FormControl>
-						<FormControl>
-							<FormLabel color={'white'}>Twitter</FormLabel>
-							<Input type="text" />
-						</FormControl>
-					</Flex>
+					<Grid
+						templateColumns={'repeat(3, 1fr)'}
+						templateRows={'repeat(2, 1fr)'}
+						gap={'2%'}
+					>
+						<GridItem>
+							<FormControl>
+								<FormLabel color={'white'}>YouTube</FormLabel>
+								<Input type="text" />
+							</FormControl>
+						</GridItem>
+						<GridItem>
+							<FormControl>
+								<FormLabel color={'white'}>Discord</FormLabel>
+								<Input type="text" />
+							</FormControl>
+						</GridItem>
+						<GridItem>
+							<FormControl>
+								<FormLabel color={'white'}>Linkedin</FormLabel>
+								<Input type="text" />
+							</FormControl>
+						</GridItem>
+						<GridItem>
+							<FormControl>
+								<FormLabel color={'white'}>Instagram</FormLabel>
+								<Input type="text" />
+							</FormControl>
+						</GridItem>
+						<GridItem>
+							<FormControl>
+								<FormLabel color={'white'}>Github</FormLabel>
+								<Input type="text" />
+							</FormControl>
+						</GridItem>
+						<GridItem>
+							<FormControl>
+								<FormLabel color={'white'}>Twitter</FormLabel>
+								<Input type="text" />
+							</FormControl>
+						</GridItem>
+					</Grid>
 					<FormControl>
-						<FormLabel color={'white'}>Bio</FormLabel>
+						<FormLabel color={'white'}>Sobre</FormLabel>
 						<Textarea />
 					</FormControl>
 					<Button
