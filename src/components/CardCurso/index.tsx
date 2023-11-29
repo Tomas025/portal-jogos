@@ -1,13 +1,7 @@
 import { Curso } from 'components/ListCursosPage/type';
+import ModalCurso from 'components/ModalCurso';
 
-import {
-	Card,
-	// CardHeader,
-	CardBody,
-	Text,
-	Button,
-	Flex
-} from '@chakra-ui/react';
+import { Card, CardBody, Text, Flex } from '@chakra-ui/react';
 
 export default function CardCurso(curso: Curso) {
 	return (
@@ -46,17 +40,7 @@ export default function CardCurso(curso: Curso) {
 							Top rating / 5000XP
 						</Text>
 					</Flex>
-					<Button
-						variant={'outline'}
-						rounded={'0'}
-						colorScheme="cyan"
-						_hover={{ backgroundColor: '#00B5D833' }}
-						width={{ lg: '18.9375rem' }}
-						height={{ lg: '6rem' }}
-						fontSize={{ lg: '2.125rem' }}
-					>
-						Saiba Mais
-					</Button>
+					<ModalCurso {...curso} />
 				</Flex>
 			</CardBody>
 		</Card>
