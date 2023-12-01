@@ -24,8 +24,7 @@ import { api } from 'services/api';
 import * as yup from 'yup';
 
 import styles from './styles.module.scss';
-import { types } from './type';
-import { RegisterFormProps } from './type';
+import { RegisterFormProps, types } from './type';
 
 const RegisterFormSchema = yup.object().shape({
 	userName: yup.string().required('Nome de usuário obrigatório'),
@@ -143,7 +142,7 @@ export const RegisterPage = () => {
 			>
 				Faça seu registro
 			</Heading>
-			<form action="" onSubmit={handleSubmit(submitForm)}>
+			<form onSubmit={handleSubmit(submitForm)}>
 				<Flex
 					flexDir={'column'}
 					width={{

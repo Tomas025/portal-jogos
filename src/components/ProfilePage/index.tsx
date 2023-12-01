@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import {
 	FiGithub,
 	FiInstagram,
@@ -20,8 +21,56 @@ import {
 	Text,
 	Textarea
 } from '@chakra-ui/react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+import { ProfileFormProps } from './type';
+
+const ProfileFormSchema = yup.object().shape({
+	userName: yup.string().required('Nome de usuário obrigatório'),
+	tagName: yup.string().required('TagName obrigatório'),
+	youtube: yup.string().url('Link inválido'),
+	discord: yup.string().url('Link inválido'),
+	linkedin: yup.string().url('Link inválido'),
+	instagram: yup.string().url('Link inválido'),
+	github: yup.string().url('Link inválido'),
+	twitter: yup.string().url('Link inválido'),
+	about: yup.string().required('Sobre obrigatório')
+});
 
 export const ProfilePage = () => {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors }
+	} = useForm({
+		resolver: yupResolver(ProfileFormSchema)
+	});
+
+	const submitForm: SubmitHandler<ProfileFormProps> = ({
+		userName,
+		tagName,
+		youtube,
+		discord,
+		linkedin,
+		instagram,
+		github,
+		twitter,
+		about
+	}) => {
+		console.log(
+			userName,
+			tagName,
+			youtube,
+			discord,
+			linkedin,
+			instagram,
+			github,
+			twitter,
+			about
+		);
+	};
+
 	return (
 		<Flex
 			justifyContent={'center'}
@@ -124,6 +173,7 @@ export const ProfilePage = () => {
 						width: '100%',
 						gap: '2vh'
 					}}
+					onSubmit={handleSubmit(submitForm)}
 				>
 					<FormControl>
 						<FormLabel color={'white'}>Nametag</FormLabel>
@@ -132,7 +182,13 @@ export const ProfilePage = () => {
 							_focus={{ borderColor: '#F000AD' }}
 							type="text"
 							placeholder={'Digite sua Nametag'}
+							{...register('tagName')}
 						/>
+						{errors.tagName?.message ? (
+							<Text as={'b'} color={'red'}>
+								{errors.tagName.message}
+							</Text>
+						) : null}
 					</FormControl>
 					<FormControl>
 						<FormLabel color={'white'}>Name</FormLabel>
@@ -141,7 +197,13 @@ export const ProfilePage = () => {
 							_focus={{ borderColor: '#F000AD' }}
 							type="text"
 							placeholder={'Digite seu nome de usuário'}
+							{...register('userName')}
 						/>
+						{errors.userName?.message ? (
+							<Text as={'b'} color={'red'}>
+								{errors.userName.message}
+							</Text>
+						) : null}
 					</FormControl>
 					<Grid
 						templateColumns={'repeat(3, 1fr)'}
@@ -156,7 +218,13 @@ export const ProfilePage = () => {
 									_focus={{ borderColor: '#F000AD' }}
 									type="text"
 									placeholder={'Link do seu canal'}
+									{...register('youtube')}
 								/>
+								{errors.youtube?.message ? (
+									<Text as={'b'} color={'red'}>
+										{errors.youtube.message}
+									</Text>
+								) : null}
 							</FormControl>
 						</GridItem>
 						<GridItem>
@@ -167,7 +235,13 @@ export const ProfilePage = () => {
 									_focus={{ borderColor: '#F000AD' }}
 									type="text"
 									placeholder={'Link do seu perfil Discord'}
+									{...register('discord')}
 								/>
+								{errors.discord?.message ? (
+									<Text as={'b'} color={'red'}>
+										{errors.discord.message}
+									</Text>
+								) : null}
 							</FormControl>
 						</GridItem>
 						<GridItem>
@@ -178,7 +252,13 @@ export const ProfilePage = () => {
 									_focus={{ borderColor: '#F000AD' }}
 									type="text"
 									placeholder={'Link do seu perfil Linkedin'}
+									{...register('linkedin')}
 								/>
+								{errors.linkedin?.message ? (
+									<Text as={'b'} color={'red'}>
+										{errors.linkedin.message}
+									</Text>
+								) : null}
 							</FormControl>
 						</GridItem>
 						<GridItem>
@@ -189,7 +269,13 @@ export const ProfilePage = () => {
 									_focus={{ borderColor: '#F000AD' }}
 									type="text"
 									placeholder={'Link do seu perfil Instagram'}
+									{...register('instagram')}
 								/>
+								{errors.instagram?.message ? (
+									<Text as={'b'} color={'red'}>
+										{errors.instagram.message}
+									</Text>
+								) : null}
 							</FormControl>
 						</GridItem>
 						<GridItem>
@@ -200,7 +286,13 @@ export const ProfilePage = () => {
 									_focus={{ borderColor: '#F000AD' }}
 									type="text"
 									placeholder={'Link do seu perfil Github'}
+									{...register('github')}
 								/>
+								{errors.github?.message ? (
+									<Text as={'b'} color={'red'}>
+										{errors.github.message}
+									</Text>
+								) : null}
 							</FormControl>
 						</GridItem>
 						<GridItem>
@@ -211,7 +303,13 @@ export const ProfilePage = () => {
 									_focus={{ borderColor: '#F000AD' }}
 									type="text"
 									placeholder={'Link do seu perfil Twitter'}
+									{...register('twitter')}
 								/>
+								{errors.twitter?.message ? (
+									<Text as={'b'} color={'red'}>
+										{errors.twitter.message}
+									</Text>
+								) : null}
 							</FormControl>
 						</GridItem>
 					</Grid>
@@ -222,7 +320,13 @@ export const ProfilePage = () => {
 							_focus={{ borderColor: '#F000AD' }}
 							resize={'none'}
 							placeholder={'Digite um pequeno texto sobre você'}
+							{...register('about')}
 						/>
+						{errors.about?.message ? (
+							<Text as={'b'} color={'red'}>
+								{errors.about.message}
+							</Text>
+						) : null}
 					</FormControl>
 					<Button
 						as={'b'}
