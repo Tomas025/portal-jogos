@@ -13,7 +13,8 @@ import {
 	ModalCloseButton,
 	ModalBody,
 	ModalFooter,
-	Text
+	Text,
+	Flex
 } from '@chakra-ui/react';
 
 export default function ModalCurso(curso: Curso) {
@@ -38,7 +39,7 @@ export default function ModalCurso(curso: Curso) {
 				onClose={onClose}
 				isOpen={isOpen}
 				motionPreset="slideInBottom"
-				size={{ base: 'xl', md: 'xl', lg: 'xl', xl: 'xxl' }}
+				size={{ base: 'xl', md: 'xl', lg: 'xl', xl: '2xl' }}
 				scrollBehavior={'inside'}
 			>
 				<ModalOverlay />
@@ -58,12 +59,12 @@ export default function ModalCurso(curso: Curso) {
 					<Image
 						src={'/img/image-curso 1.png'}
 						alt={''}
-						height={'640'}
-						width={'960'}
+						height={'417'}
+						width={'778'}
 					/>
 					<ModalHeader>{curso.Titulo}</ModalHeader>
 					<ModalCloseButton />
-					<ModalBody>
+					<ModalBody height={'591px'}>
 						<Text
 							textAlign={{
 								base: 'start',
@@ -83,17 +84,34 @@ export default function ModalCurso(curso: Curso) {
 								</Link>
 							</Button>
 						)}
-						<Button
-							variant={'outline'}
-							rounded={'0'}
-							colorScheme="pink"
-							_hover={{
-								backgroundColor: '#a35b9d',
-								color: '#0e0b1c'
-							}}
-						>
-							Inscrever-se
-						</Button>
+						<Flex flexDir={'column'} gap={4}>
+							<Flex>
+								<Text
+									fontSize={'font-size: 1.25rem'}
+									fontWeight={400}
+								>
+									Criador/XP/Insiginia:{' '}
+								</Text>
+								<Text color={'#F000AD'}>
+									Dona Nise / 5000XP / 🎖
+								</Text>
+							</Flex>
+							<Button
+								variant={'outline'}
+								borderColor={'#00FFF0'}
+								rounded={'0'}
+								color={'#00FFF0'}
+								width={'9.75rem'}
+								_hover={{
+									backgroundColor: '#00FFF0',
+									color: '#0e0b1c'
+								}}
+								flexGrow={0}
+								flexShrink={0}
+							>
+								Inscrever-se
+							</Button>
+						</Flex>
 					</ModalFooter>
 				</ModalContent>
 			</Modal>
