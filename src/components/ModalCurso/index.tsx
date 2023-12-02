@@ -14,19 +14,68 @@ import {
 	ModalBody,
 	ModalFooter,
 	Text,
-	Flex
+	Flex,
+	useToast
 } from '@chakra-ui/react';
+import { api } from 'services/api';
 
 export default function ModalCurso(curso: Curso) {
 	const { isOpen, onOpen, onClose } = useDisclosure();
+	const Toast = useToast();
+
+	const subscribe = () => {
+		api.post('/cursa', {
+			idCurso: curso.Id,
+			idPessoa: 3, //Pegar o id da pessoa logada, faça ai bandido
+			concluido: false,
+			dataInicio: new Date().toISOString(),
+			dataFim: null
+		})
+			.then(() => {
+				Toast({
+					title: 'Inscrito com sucesso!',
+					status: 'success',
+					duration: 3000,
+					isClosable: true,
+					position: 'top'
+				});
+			})
+			.catch((err) => {
+				if (err.response.status === 409) {
+					Toast({
+						title: 'Você já está inscrito nesse curso!',
+						description:
+							'Vá para a aba "Meus Cursos" para acessá-lo',
+						status: 'error',
+						duration: 3000,
+						isClosable: true,
+						position: 'top'
+					});
+				} else {
+					Toast({
+						title: 'Erro ao se inscrever no curso!',
+						description: 'Ocorreu um erro inesperado',
+						status: 'error',
+						duration: 3000,
+						isClosable: true,
+						position: 'top'
+					});
+				}
+				console.error(err);
+			});
+	};
 
 	return (
 		<>
 			<Button
 				variant={'outline'}
+				borderColor={'#00FFF0'}
 				rounded={'0'}
-				colorScheme="cyan"
-				_hover={{ backgroundColor: '#00B5D833' }}
+				color={'#00FFF0'}
+				_hover={{
+					backgroundColor: '#00FFF0',
+					color: '#0e0b1c'
+				}}
 				width={{ lg: '18.9375rem' }}
 				height={{ lg: '6rem' }}
 				fontSize={{ lg: '2.125rem' }}
@@ -108,6 +157,7 @@ export default function ModalCurso(curso: Curso) {
 								}}
 								flexGrow={0}
 								flexShrink={0}
+								onClick={subscribe}
 							>
 								Inscrever-se
 							</Button>
