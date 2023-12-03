@@ -20,8 +20,8 @@ import {
 import { api } from 'services/api';
 
 type Curso = {
-	IdCurso: number;
-	IdPessoa: number;
+	idCurso: number;
+	idPessoa: number;
 	AulasConcluidas: number;
 	TotalAulas: number;
 	TituloCurso: string;
@@ -30,16 +30,18 @@ type Curso = {
 export default function CursosProgress() {
 	const [cursos, setCursos] = useState<Curso[]>([]);
 
+	const fetchData = async () => {
+		try {
+			const response = await api.get('/cursos/progresso/pessoaId/3');
+			setCursos(response.data);
+			console.log(response.data);
+		} catch (error) {
+			console.error(error);
+			alert('Erro ao carregar cursos');
+		}
+	};
 	useEffect(() => {
-		(async () => {
-			try {
-				const response = await api.get('/cursos/progresso/pessoaId/3');
-				setCursos(response.data);
-			} catch (error) {
-				console.error(error);
-				alert('Erro ao carregar cursos');
-			}
-		})();
+		fetchData();
 	}, []);
 
 	return (
@@ -81,7 +83,7 @@ export default function CursosProgress() {
 							</Thead>
 							<Tbody>
 								{cursos.map((curso) => (
-									<Tr key={curso.IdCurso}>
+									<Tr key={curso.idPessoa}>
 										<Td
 											border="none"
 											_hover={{
@@ -93,7 +95,7 @@ export default function CursosProgress() {
 												fontWeight={'100'}
 											>
 												<Link
-													href={`$/curos${curso.IdCurso}`}
+													href={`/cursos/${curso.idCurso}`}
 												>
 													{curso.TituloCurso}
 												</Link>
