@@ -42,7 +42,7 @@ export const LoginPage = () => {
 		setIsLoading(true);
 		api.post('/auth/login', {
 			Email: email,
-			Password: password
+			Senha: password
 		})
 			.then((response) => {
 				setCookie(
@@ -56,8 +56,8 @@ export const LoginPage = () => {
 				push('/profile');
 			})
 			.catch((error) => {
-				// console.log(error);
-				if (error.response.data.status != 401) {
+				console.log(error);
+				if (error.response.data.statusCode != 401) {
 					toast({
 						title: 'Erro ao realizar login',
 						description: 'Ocorreu algum erro ao realizar login',
