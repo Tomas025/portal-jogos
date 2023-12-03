@@ -70,7 +70,7 @@ export default function ModalCurso(curso: Curso) {
 			<Button
 				variant={'outline'}
 				borderColor={'#00FFF0'}
-				rounded={'0'}
+				rounded={'5'}
 				color={'#00FFF0'}
 				_hover={{
 					backgroundColor: '#00FFF0',
