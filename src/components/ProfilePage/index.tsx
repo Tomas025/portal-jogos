@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -27,8 +28,8 @@ import * as yup from 'yup';
 import { ProfileFormProps } from './type';
 
 const ProfileFormSchema = yup.object().shape({
-	userName: yup.string().required('Nome de usuário obrigatório'),
 	tagName: yup.string().required('TagName obrigatório'),
+	userName: yup.string().required('Nome de usuário obrigatório'),
 	youtube: yup.string().url('Link inválido'),
 	discord: yup.string().url('Link inválido'),
 	linkedin: yup.string().url('Link inválido'),
@@ -167,13 +168,13 @@ export const ProfilePage = () => {
 				paddingInline={'3%'}
 			>
 				<form
+					onSubmit={handleSubmit(submitForm)}
 					style={{
 						display: 'flex',
 						flexDirection: 'column',
 						width: '100%',
 						gap: '2vh'
 					}}
-					onSubmit={handleSubmit(submitForm)}
 				>
 					<FormControl>
 						<FormLabel color={'white'}>Nametag</FormLabel>
@@ -329,11 +330,11 @@ export const ProfilePage = () => {
 						) : null}
 					</FormControl>
 					<Button
-						as={'b'}
+						type={'submit'}
+						fontWeight={'bold'}
 						width={'7vw'}
 						height={'4.6vh'}
 						fontSize={'1.25rem'}
-						type="submit"
 						colorScheme={'cyan'}
 						variant={'outline'}
 						alignSelf={'flex-start'}
