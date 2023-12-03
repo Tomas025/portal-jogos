@@ -16,7 +16,6 @@ export default function CardCurso(curso: Curso) {
 		>
 			<CardBody
 				width={{ lg: '1591px' }}
-				// border={'1px dashed red'}
 				display={'flex'}
 				justifyContent={'center'}
 			>
