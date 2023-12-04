@@ -23,8 +23,8 @@ import * as yup from 'yup';
 import { LoginFormProps } from './type';
 
 const LoginFormSchema = yup.object().shape({
-	email: yup.string().required('Email obrigatório').email('Email inválido'),
-	password: yup.string().required('Senha obrigatória')
+	Email: yup.string().required('Email obrigatório').email('Email inválido'),
+	Senha: yup.string().required('Senha obrigatória')
 });
 
 export const LoginPage = () => {
@@ -42,7 +42,7 @@ export const LoginPage = () => {
 		formState: { errors }
 	} = useForm<LoginFormProps>({ resolver: yupResolver(LoginFormSchema) });
 
-	const submitForm: SubmitHandler<LoginFormProps> = ({ email, password }) => {
+	const submitForm: SubmitHandler<LoginFormProps> = ({ Email, Senha }) => {
 		setIsLoading(true);
 		api.post('/auth/login', {
 			Email: email,
@@ -146,11 +146,11 @@ export const LoginPage = () => {
 							color={'#f5f5f5'}
 							placeholder={'Digite seu email'}
 							_focus={{ borderColor: '#F000AD' }}
-							{...register('email')}
+							{...register('Email')}
 						/>
-						{errors.email?.message ? (
+						{errors.Email?.message ? (
 							<Text as={'b'} color={'red'}>
-								{errors.email.message}
+								{errors.Email.message}
 							</Text>
 						) : null}
 					</FormControl>
@@ -163,11 +163,11 @@ export const LoginPage = () => {
 							color={'#f5f5f5'}
 							placeholder={'Digite sua senha'}
 							_focus={{ borderColor: '#F000AD' }}
-							{...register('password')}
+							{...register('Senha')}
 						/>
-						{errors.password?.message ? (
+						{errors.Senha?.message ? (
 							<Text as={'b'} color={'red'}>
-								{errors.password.message}
+								{errors.Senha.message}
 							</Text>
 						) : null}
 					</FormControl>
