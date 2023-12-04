@@ -1,11 +1,12 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-import { Box, Flex, Text } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import { api } from 'services/api';
 
 import { CardAulas } from './CardModule';
 import { Aula, Modulo } from './type';
+import VideoSection from './VideoSection';
 
 export default function ClassPage() {
 	const [aula, setAula] = useState<Aula>();
@@ -13,7 +14,6 @@ export default function ClassPage() {
 
 	const handleAulaChange = (novaAula: Aula) => {
 		setAula(novaAula);
-		console.log(aula);
 	};
 
 	useEffect(() => {
@@ -31,7 +31,6 @@ export default function ClassPage() {
 				flexDirection={'row'}
 				justifyContent={'center'}
 				alignItems={'center'}
-				bg={'gray'}
 				gap={4}
 			>
 				<Flex
@@ -43,6 +42,7 @@ export default function ClassPage() {
 					alignItems={'center'}
 					gap={4}
 					padding={'35px'}
+					overflow={'hidden'}
 				>
 					{modulos?.map((modulo) => (
 						<CardAulas
@@ -58,8 +58,9 @@ export default function ClassPage() {
 						height={'88vh'}
 						bg={'#120E27'}
 						rounded={'21px'}
+						padding={'50px'}
 					>
-						<Text>Faça seu componente aqui{aula?.Descricao}</Text>
+						<VideoSection aula={aula} />
 					</Box>
 				</Flex>
 			</Flex>
