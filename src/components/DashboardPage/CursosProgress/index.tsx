@@ -40,6 +40,7 @@ export default function CursosProgress() {
 			alert('Erro ao carregar cursos');
 		}
 	};
+
 	useEffect(() => {
 		fetchData();
 	}, []);

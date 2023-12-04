@@ -1,7 +1,7 @@
-import CursosProgress from 'components/CursosProgress';
-import XpProgress from 'components/XpProgress';
-
 import { Box, Flex, Grid, GridItem } from '@chakra-ui/react';
+
+import CursosProgress from './CursosProgress';
+import XpProgress from './XpProgress';
 
 export default function DashboardStudentPage() {
 	return (

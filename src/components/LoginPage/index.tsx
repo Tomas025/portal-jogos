@@ -16,7 +16,7 @@ import {
 	useToast
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { parseCookies, setCookie } from 'nookies';
+import { setCookie } from 'nookies';
 import { api } from 'services/api';
 import * as yup from 'yup';
 
@@ -45,14 +45,10 @@ export const LoginPage = () => {
 	const submitForm: SubmitHandler<LoginFormProps> = ({ Email, Senha }) => {
 		setIsLoading(true);
 		api.post('/auth/login', {
-			Email: email,
-			Senha: password
+			Email: Email,
+			Senha: Senha
 		})
 			.then((response) => {
-				const { 'portal-jogos.token': token } = parseCookies();
-
-				console.log(token);
-
 				setCookie(
 					undefined,
 					'portal-jogos.token',

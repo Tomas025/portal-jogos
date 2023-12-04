@@ -1,6 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 
+import { userProps } from 'components/ProfilePage/type';
+
 import {
 	Card,
 	CardBody,
@@ -9,12 +11,17 @@ import {
 	Flex,
 	Text
 } from '@chakra-ui/react';
+import { jwtDecode } from 'jwt-decode';
+import { parseCookies } from 'nookies';
 
 export default function XpProgress() {
+	const { 'portal-jogos.token': token } = parseCookies();
+
+	const [user] = useState<userProps | null>(jwtDecode(token) || null);
 	const [XP, setXP] = useState(0);
 	useEffect(() => {
-		setXP(600);
-	}, []);
+		setXP(user?.result?.XP || 0);
+	}, [user?.result?.XP]);
 
 	return (
 		<Flex justifyContent={'center'} alignItems={'center'}>
