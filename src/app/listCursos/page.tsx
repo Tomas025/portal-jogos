@@ -1,5 +1,5 @@
 import ListCursosPage from 'components/ListCursosPage';
 
-export default function Login() {
+export default function ListCursos() {
 	return <ListCursosPage />;
 }

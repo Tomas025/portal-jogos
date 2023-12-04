@@ -1,5 +1,5 @@
 import DashboardStudentPage from 'components/DashboardPage';
 
-export default function Login() {
+export default function DashboardStudent() {
 	return <DashboardStudentPage />;
 }

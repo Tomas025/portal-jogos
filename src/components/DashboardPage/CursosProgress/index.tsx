@@ -60,10 +60,14 @@ export default function CursosProgress() {
 					width={{ lg: '52rem' }}
 					display={'flex'}
 					justifyContent={'center'}
-					alignItems={'center'}
+					alignItems={'flex-start'}
 					flexDir={'column'}
 				>
-					<TableContainer width={'100%'}>
+					<TableContainer
+						width={'100%'}
+						height={'31vh'}
+						overflowY={'scroll'}
+					>
 						<Table>
 							<Thead>
 								<Tr>
