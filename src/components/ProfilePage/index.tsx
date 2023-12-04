@@ -21,10 +21,12 @@ import {
 	GridItem,
 	Input,
 	Text,
-	Textarea
+	Textarea,
+	useToast
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useUser } from 'hooks';
+import { api } from 'services/api';
 import * as yup from 'yup';
 
 import { ProfileFormProps } from './type';
@@ -43,8 +45,9 @@ const ProfileFormSchema = yup.object().shape({
 
 export const ProfilePage = () => {
 	const { user } = useUser();
+	const toast = useToast();
 
-	console.log(user);
+	// console.log(user);
 
 	const {
 		register,
@@ -69,25 +72,32 @@ export const ProfilePage = () => {
 	const submitForm: SubmitHandler<ProfileFormProps> = ({
 		userName,
 		tagName,
-		youtube,
-		discord,
-		linkedin,
-		instagram,
-		github,
-		twitter,
-		about
+		youtube
+		// discord,
+		// linkedin,
+		// instagram,
+		// github,
+		// twitter,
+		// about
 	}) => {
-		console.log(
-			userName,
-			tagName,
-			youtube,
-			discord,
-			linkedin,
-			instagram,
-			github,
-			twitter,
-			about
-		);
+		api.patch(`/pessoa/${user?.result?.Id}`, {
+			Nome: userName,
+			Username: tagName,
+			Canal: youtube
+			// Discord: discord,
+			// Linkedin: linkedin,
+			// Instagram: instagram,
+			// Github: github,
+			// Twitter: twitter,
+			// Sobre: about
+		}).then(() => {
+			toast({
+				title: 'Perfil atualizado com sucesso',
+				status: 'success',
+				duration: 3000,
+				isClosable: true
+			});
+		});
 	};
 
 	return (
@@ -102,7 +112,7 @@ export const ProfilePage = () => {
 		>
 			<Flex
 				width={'20vw'}
-				height={'58vh'}
+				height={'70vh'}
 				flexDir={'column'}
 				border={'1px solid #B530F3'}
 				alignItems={'center'}
@@ -132,14 +142,14 @@ export const ProfilePage = () => {
 								color={'white'}
 								fontSize={'1.875rem'}
 							>
-								{watch('tagName')}
+								{watch('userName')}
 							</Text>
 							<Text
 								color={'gray'}
 								fontSize={'1.25rem'}
 								marginTop={'-2%'}
 							>
-								@Hackerman
+								@{watch('tagName')}
 							</Text>
 						</Box>
 					</Flex>
@@ -148,8 +158,7 @@ export const ProfilePage = () => {
 							Sobre
 						</Text>
 						<Text color={'white'} fontSize={'.875rem'}>
-							I&apos;m Yuki. Full Stack Designer I enjoy creating
-							user-centric, delightful and human experiences.
+							{watch('about')}
 						</Text>
 					</Box>
 				</Flex>
@@ -159,19 +168,34 @@ export const ProfilePage = () => {
 					justifyContent={'center'}
 					gap={'20px'}
 				>
-					<Link href={'/'}>
+					<Link
+						target="_blank"
+						href={watch('youtube') as unknown as URL}
+					>
 						<FiYoutube fontSize={'1.5rem'} color={'red'} />
 					</Link>
-					<Link href={'/'}>
+					<Link
+						target="_blank"
+						href={watch('instagram') as unknown as URL}
+					>
 						<FiInstagram fontSize={'1.5rem'} color={'#D6349F'} />
 					</Link>
-					<Link href={'/'}>
+					<Link
+						target="_blank"
+						href={watch('github') as unknown as URL}
+					>
 						<FiGithub fontSize={'1.5rem'} color={'white'} />
 					</Link>
-					<Link href={'/'}>
+					<Link
+						target="_blank"
+						href={watch('linkedin') as unknown as URL}
+					>
 						<FiLinkedin fontSize={'1.5rem'} color={'#0B65C3'} />
 					</Link>
-					<Link href={'/'}>
+					<Link
+						target="_blank"
+						href={watch('twitter') as unknown as URL}
+					>
 						<FiTwitter fontSize={'1.5rem'} color={'#1AA2F8'} />
 					</Link>
 				</Flex>
@@ -180,7 +204,7 @@ export const ProfilePage = () => {
 				alignItems={'center'}
 				justifyContent={'center'}
 				width={'49vw'}
-				height={'58vh'}
+				height={'70vh'}
 				border={'1px solid #B530F3'}
 				borderRadius={'8px'}
 				paddingInline={'3%'}
@@ -353,10 +377,14 @@ export const ProfilePage = () => {
 						width={'7vw'}
 						height={'4.6vh'}
 						fontSize={'1.25rem'}
-						colorScheme={'cyan'}
 						variant={'outline'}
+						borderColor={'#00FFF0'}
+						color={'#00FFF0'}
 						alignSelf={'flex-start'}
-						_hover={{ backgroundColor: '#00B5D833' }}
+						_hover={{
+							backgroundColor: '#00FFF0',
+							color: '#0e0b1c'
+						}}
 					>
 						Salvar
 					</Button>

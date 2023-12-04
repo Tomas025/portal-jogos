@@ -1,5 +1,12 @@
 import axios from 'axios';
+import { parseCookies } from 'nookies';
 
 export const api = axios.create({
-	baseURL: 'https://393d-200-133-7-181.ngrok-free.app'
+	baseURL: 'http://localhost:3333'
 });
+
+const { 'portal-jogos.token': token } = parseCookies();
+
+if (token) {
+	api.defaults.headers['Authorization'] = `Bearer ${token}`;
+}
