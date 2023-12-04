@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
 import { api } from 'services/api';
 
 import { CardAulas } from './CardModule';
@@ -28,13 +28,15 @@ export default function ClassPage() {
 			<Flex
 				width={'100vw'}
 				height={'100vh'}
-				flexDirection={'column'}
+				flexDirection={'row'}
 				justifyContent={'center'}
 				alignItems={'center'}
+				bg={'gray'}
+				gap={4}
 			>
 				<Flex
-					width={'31.4375rem'}
-					height={'50.6875rem'}
+					width={'26vw'}
+					height={'88vh'}
 					rounded={'21px'}
 					bg={'#120E27'}
 					flexDir={'column'}
@@ -49,6 +51,16 @@ export default function ClassPage() {
 							{...modulo}
 						/>
 					))}
+				</Flex>
+				<Flex>
+					<Box
+						width={'60vw'}
+						height={'88vh'}
+						bg={'#120E27'}
+						rounded={'21px'}
+					>
+						<Text>Faça seu componente aqui{aula?.Descricao}</Text>
+					</Box>
 				</Flex>
 			</Flex>
 		</Box>
