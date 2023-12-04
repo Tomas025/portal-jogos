@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
+// import { useEffect, useRef } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import {
 	FiGithub,
@@ -23,6 +24,7 @@ import {
 	Textarea
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useUser } from 'hooks';
 import * as yup from 'yup';
 
 import { ProfileFormProps } from './type';
@@ -40,12 +42,28 @@ const ProfileFormSchema = yup.object().shape({
 });
 
 export const ProfilePage = () => {
+	const { user } = useUser();
+
+	console.log(user);
+
 	const {
 		register,
+		watch,
 		handleSubmit,
 		formState: { errors }
 	} = useForm({
-		resolver: yupResolver(ProfileFormSchema)
+		resolver: yupResolver(ProfileFormSchema),
+		defaultValues: {
+			userName: user?.result?.Nome,
+			tagName: user?.result?.Username,
+			youtube: user?.result?.Canal,
+			discord: '',
+			linkedin: '',
+			instagram: '',
+			github: '',
+			twitter: '',
+			about: ''
+		}
 	});
 
 	const submitForm: SubmitHandler<ProfileFormProps> = ({
@@ -114,7 +132,7 @@ export const ProfilePage = () => {
 								color={'white'}
 								fontSize={'1.875rem'}
 							>
-								Elliot Alderson
+								{watch('tagName')}
 							</Text>
 							<Text
 								color={'gray'}
