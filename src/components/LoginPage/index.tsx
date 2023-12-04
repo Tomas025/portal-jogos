@@ -16,7 +16,7 @@ import {
 	useToast
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { setCookie } from 'nookies';
+import { parseCookies, setCookie } from 'nookies';
 import { api } from 'services/api';
 import * as yup from 'yup';
 
@@ -32,6 +32,10 @@ export const LoginPage = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const { push } = useRouter();
 
+	function redirect() {
+		push('/profile');
+	}
+
 	const {
 		register,
 		handleSubmit,
@@ -45,6 +49,10 @@ export const LoginPage = () => {
 			Senha: password
 		})
 			.then((response) => {
+				const { 'portal-jogos.token': token } = parseCookies();
+
+				console.log(token);
+
 				setCookie(
 					undefined,
 					'portal-jogos.token',
@@ -53,7 +61,16 @@ export const LoginPage = () => {
 						maxAge: 60 * 60 * 1 // 1 hour
 					}
 				);
-				push('/profile');
+				toast({
+					title: 'Login realizado com sucesso',
+					description:
+						'Você será redirecionado para a página de perfil',
+					status: 'success',
+					position: 'top',
+					duration: 5000,
+					isClosable: true
+				});
+				setTimeout(redirect, 1000);
 			})
 			.catch((error) => {
 				console.log(error);
