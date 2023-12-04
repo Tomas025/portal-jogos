@@ -1,5 +1,6 @@
 'use client';
 import NextLink from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -29,6 +30,11 @@ const LoginFormSchema = yup.object().shape({
 export const LoginPage = () => {
 	const toast = useToast();
 	const [isLoading, setIsLoading] = useState(false);
+	const { push } = useRouter();
+
+	function redirect() {
+		push('/profile');
+	}
 
 	const {
 		register,
@@ -51,10 +57,20 @@ export const LoginPage = () => {
 						maxAge: 60 * 60 * 1 // 1 hour
 					}
 				);
+				toast({
+					title: 'Login realizado com sucesso',
+					description:
+						'Você será redirecionado para a página de perfil',
+					status: 'success',
+					position: 'top',
+					duration: 5000,
+					isClosable: true
+				});
+				setTimeout(redirect, 1000);
 			})
 			.catch((error) => {
 				console.log(error);
-				if (error.response.data.status != 401) {
+				if (error.response.data.statusCode != 401) {
 					toast({
 						title: 'Erro ao realizar login',
 						description: 'Ocorreu algum erro ao realizar login',

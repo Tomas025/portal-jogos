@@ -1,7 +1,8 @@
 import { Curso } from 'components/ListCursosPage/type';
-import ModalCurso from 'components/ModalCurso';
 
 import { Card, CardBody, Text, Flex } from '@chakra-ui/react';
+
+import ModalCurso from './ModalCurso';
 
 export default function CardCurso(curso: Curso) {
 	return (
