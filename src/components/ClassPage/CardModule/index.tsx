@@ -6,52 +6,23 @@ import { Link } from '@chakra-ui/next-js';
 import { Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import { api } from 'services/api';
 
+import { Aula, Modulo } from '../type';
 import styles from './styles.module.scss';
 
-type Modulo = {
-	Id: number;
-	Titulo: string;
-	Descricao: string;
-	Sequencia: number;
-	fkCursoId: number;
-};
-
-export default function CardModule() {
-	const [modulos, setModulos] = useState<Modulo[]>();
-
-	useEffect(() => {
-		(async () => {
-			const response = await api.get('/modulos/cursoId/3');
-			setModulos(response.data);
-		})();
-	}, []);
-
-	return (
-		<>
-			<Flex
-				width={'31.4375rem'}
-				height={'50.6875rem'}
-				rounded={'21px'}
-				bg={'#120E27'}
-				flexDir={'column'}
-				alignItems={'center'}
-				gap={4}
-				padding={'35px'}
-			>
-				{modulos?.map((modulo) => (
-					<CardAulas key={modulo.Id} {...modulo} />
-				))}
-			</Flex>
-		</>
-	);
+interface CardAulasProps extends Modulo {
+	onAulaChange: (novaAula: Aula) => void;
 }
 
-function CardAulas(modulo: Modulo) {
-	const [aulas, setAulas] = useState<Modulo[]>([]);
+export function CardAulas({ onAulaChange, ...modulo }: CardAulasProps) {
+	const [aulas, setAulas] = useState<Aula[]>([]);
 	const [expandido, setExpandido] = useState(false);
 
 	const handleToggleExpandir = () => {
 		setExpandido(!expandido);
+	};
+
+	const handleAulaClick = (novaAula: Aula) => {
+		onAulaChange(novaAula);
 	};
 
 	useEffect(() => {
@@ -95,9 +66,9 @@ function CardAulas(modulo: Modulo) {
 							{modulo.Titulo}
 						</Heading>
 						{expandido ? (
-							<FiChevronUp size="18px" />
+							<FiChevronUp className={styles.Icon} />
 						) : (
-							<FiChevronDown size="18px" />
+							<FiChevronDown className={styles.Icon} />
 						)}
 					</Flex>
 					{expandido &&
@@ -109,7 +80,12 @@ function CardAulas(modulo: Modulo) {
 								fontWeight={'400'}
 								lineHeight={'normal'}
 							>
-								<Link href={'/class'}>{aula.Descricao}</Link>
+								<Link
+									href={'/class'}
+									onClick={() => handleAulaClick(aula)}
+								>
+									{aula.Descricao}
+								</Link>
 							</Text>
 						))}
 				</Stack>
