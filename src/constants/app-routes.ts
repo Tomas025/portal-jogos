@@ -11,7 +11,9 @@ export const APP_ROUTES = {
 	public: {
 		home: '/',
 		login: '/login',
-		register: '/register'
+		register: '/register', 
+		informations: '/informations',
+		notFound: '/not-found'
 		// forget_password: '/forget-password'
 	}
 };
