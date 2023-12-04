@@ -22,7 +22,9 @@ export default function VideoSection({ aula }: VideoSectionProps) {
 					<Text fontSize={'1.25rem'} fontWeight={400}>
 						Modulo 1 | Desenvolvimento de jogos 2D em Unity
 					</Text>
-					<Heading>Aula 1 | {aula.Descricao}</Heading>
+					<Heading>
+						Aula {aula.Sequencia} | {aula.Titulo}
+					</Heading>
 					<Text
 						fontSize={'1.25rem'}
 						color={'#F000AD'}
@@ -38,9 +40,8 @@ export default function VideoSection({ aula }: VideoSectionProps) {
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 						allowFullScreen
 					></iframe>
-					<Text height={'20vh'}>
+					<Text height={'20vh'} width={'98%'}>
 						{aula.Descricao}
-						AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 					</Text>
 					<Flex
 						flexDir={'row'}

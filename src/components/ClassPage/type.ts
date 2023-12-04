@@ -1,5 +1,6 @@
 export type Aula = {
 	Id: number;
+	Titulo: string;
 	Descricao: string;
 	XP: number;
 	UrlVideo: string;

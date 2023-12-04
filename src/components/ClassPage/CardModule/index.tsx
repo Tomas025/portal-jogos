@@ -84,7 +84,7 @@ export function CardAulas({ onAulaChange, ...modulo }: CardAulasProps) {
 									href={'/class'}
 									onClick={() => handleAulaClick(aula)}
 								>
-									{aula.Descricao}
+									Aula {aula.Sequencia} | {aula.Titulo}
 								</Link>
 							</Text>
 						))}
