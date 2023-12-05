@@ -5,7 +5,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import { api } from 'services/api';
 
 import { CardAulas } from './CardModule';
-import ComplementaryMaterial from './ComplementaryMateial';
+// import ComplementaryMaterial from './ComplementaryMateial';
 import { Aula, Modulo } from './type';
 import VideoSection from './VideoSection';
 
@@ -59,13 +59,14 @@ export default function ClassPage() {
 						height={'88vh'}
 						bg={'#120E27'}
 						rounded={'21px'}
-						padding={'50px'}
+						paddingX={'2.5vw'}
+						paddingY={'2vh'}
 						display={'flex'}
 					>
 						<VideoSection aula={aula} />
-						{aula?.Id && (
+						{/* {aula?.Id && (
 							<ComplementaryMaterial aulaId={aula?.Id} />
-						)}
+						)} */}
 					</Box>
 				</Flex>
 			</Flex>
