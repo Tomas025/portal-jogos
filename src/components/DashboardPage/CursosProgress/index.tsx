@@ -68,11 +68,14 @@ export default function CursosProgress() {
 						height={'31vh'}
 						overflowY={'scroll'}
 					>
-						<Table>
+						<Table color="#f5f5f5">
 							<Thead>
 								<Tr>
 									<Th border="none">
-										<Heading fontSize={'1.75rem'}>
+										<Heading
+											fontSize={'1.75rem'}
+											color="#f5f5f5"
+										>
 											Cursos em andamento
 										</Heading>
 									</Th>
@@ -80,6 +83,7 @@ export default function CursosProgress() {
 										<Heading
 											fontSize={'1.75rem'}
 											textAlign={'center'}
+											color="#f5f5f5"
 										>
 											AC/AT
 										</Heading>
@@ -122,6 +126,7 @@ export default function CursosProgress() {
 							<Tfoot>
 								<Tr>
 									<Th
+										color="#f5f5f5"
 										_hover={{
 											textDecoration: 'underline'
 										}}

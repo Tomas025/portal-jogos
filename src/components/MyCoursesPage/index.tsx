@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-import { ModalCursoEdit } from 'components/CardCursoEdit/ModalCursoEdit';
+import { CardCursoEdit } from 'components/CardCursoEdit';
 import { Curso } from 'components/ListCursosPage/type';
 import { userProps } from 'components/ProfilePage/type';
 
@@ -52,14 +52,14 @@ export default function MyCoursesPage() {
 						color={'#FFFFFF'}
 						width={'min-content'}
 					>
-						Explorar
+						Cursos
 					</Heading>
 					{loading && <p>Loading...</p>}
 					{error && <p>Erro ao carregar os cursos</p>}
 					{!loading && !error && (
 						<Box gap={40} height={'70vh'} overflowY={'scroll'}>
 							{cursos.map((curso) => (
-								<ModalCursoEdit key={curso.Id} {...curso} />
+								<CardCursoEdit key={curso.Id} curso={curso} />
 							))}
 						</Box>
 					)}
