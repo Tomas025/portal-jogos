@@ -1,5 +1,5 @@
 'use client';
-import Image from 'next/image';
+// import Image from 'next/image';
 import Link from 'next/link';
 // import { useEffect, useRef } from 'react';
 import { useState } from 'react';
@@ -13,6 +13,7 @@ import {
 } from 'react-icons/fi';
 
 import {
+	Avatar,
 	Box,
 	Button,
 	Flex,
@@ -61,12 +62,12 @@ export const ProfilePage = () => {
 		defaultValues: {
 			userName: user?.result?.Nome,
 			tagName: user?.result?.Username,
-			youtube: user?.result?.Canal,
-			discord: '',
-			linkedin: '',
-			instagram: '',
-			github: '',
-			twitter: '',
+			youtube: user?.result?.YouTube || '',
+			discord: user?.result?.Discord || '',
+			linkedin: user?.result?.Linkedin || '',
+			instagram: user?.result?.Instagram || '',
+			github: user?.result?.Github || '',
+			twitter: user?.result?.Twitter || '',
 			about: ''
 		}
 	});
@@ -74,32 +75,41 @@ export const ProfilePage = () => {
 	const submitForm: SubmitHandler<ProfileFormProps> = ({
 		userName,
 		tagName,
-		youtube
-		// discord,
-		// linkedin,
-		// instagram,
-		// github,
-		// twitter,
+		youtube,
+		discord,
+		linkedin,
+		instagram,
+		github,
+		twitter
 		// about
 	}) => {
 		api.patch(`/pessoa/${user?.result?.Id}`, {
 			Nome: userName,
 			Username: tagName,
-			Canal: youtube
-			// Discord: discord,
-			// Linkedin: linkedin,
-			// Instagram: instagram,
-			// Github: github,
-			// Twitter: twitter,
+			YouTube: youtube,
+			Discord: discord,
+			Linkedin: linkedin,
+			Instagram: instagram,
+			Github: github,
+			Twitter: twitter
 			// Sobre: about
-		}).then(() => {
-			toast({
-				title: 'Perfil atualizado com sucesso',
-				status: 'success',
-				duration: 3000,
-				isClosable: true
+		})
+			.then(() => {
+				toast({
+					title: 'Perfil atualizado com sucesso',
+					status: 'success',
+					duration: 3000,
+					isClosable: true
+				});
+			})
+			.catch(() => {
+				toast({
+					title: 'Erro ao atualizar perfil',
+					status: 'error',
+					duration: 3000,
+					isClosable: true
+				});
 			});
-		});
 	};
 
 	return (
@@ -131,11 +141,11 @@ export const ProfilePage = () => {
 							width={'160px'}
 							height={'160px'}
 						>
-							<Image
+							<Avatar
 								src={'/img/profile.jpeg'}
-								width={'160'}
-								height={'160'}
-								alt={'Foto de perfil'}
+								width={'160px'}
+								height={'160px'}
+								name={'Foto de perfil'}
 							/>
 						</Flex>
 						<Box textAlign={'center'} marginTop={'10%'}>

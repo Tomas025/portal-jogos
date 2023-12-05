@@ -4,6 +4,13 @@ type result = {
 	Email: string;
 	Username: string;
 	Canal: string;
+	UrlAvatar: string;
+	YouTube: string;
+	Discord: string;
+	Linkedin: string;
+	Instagram: string;
+	Github: string;
+	Twitter: string;
 	Tipo: string;
 	XP: number;
 	patenteId: number;
