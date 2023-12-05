@@ -75,12 +75,16 @@ export default function ListCursosPage() {
 						color={'#FFFFFF'}
 						width={'min-content'}
 					>
-						Cursos
+						Explorar
 					</Heading>
 					{loading && <p>Loading...</p>}
 					{error && <p>Erro ao carregar os cursos</p>}
 					{!loading && !error && (
-						<>{cursos.map((curso) => CardCurso(curso))}</>
+						<Box gap={40} height={'70vh'} overflowY={'scroll'}>
+							{cursos.map((curso) => (
+								<CardCurso key={curso.Id} {...curso} />
+							))}
+						</Box>
 					)}
 				</Flex>
 			</Flex>

@@ -52,7 +52,7 @@ export default function VideoSection({ aula }: VideoSectionProps) {
 						height={'100%'}
 						justifyContent={'space-between'}
 					>
-						<Flex height={'18vh'} overflowY={'scroll'}>
+						<Flex height={'18vh'}>
 							<Text>{aula.Descricao}</Text>
 						</Flex>
 						<Flex

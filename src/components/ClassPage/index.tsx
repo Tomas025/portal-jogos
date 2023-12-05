@@ -42,7 +42,7 @@ export default function ClassPage() {
 					width={'26vw'}
 					height={'88vh'}
 					rounded={'21px'}
-					bg={'#120E27'}
+					bg={'#120E27'} //pra depois
 					flexDir={'column'}
 					alignItems={'center'}
 					gap={4}
