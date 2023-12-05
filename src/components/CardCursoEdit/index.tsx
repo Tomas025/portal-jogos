@@ -29,20 +29,23 @@ export function CardCursoEdit({ curso }: { curso: Curso }) {
 					width={{ lg: '90%' }}
 				>
 					<Flex flexDirection={'column'}>
-						<Text
-							color={'#F5F5F5'}
-							fontFamily={'Arial'}
-							fontSize={'30px'}
-							fontWeight={'700'}
-							lineHeight={'normal'}
-						>
-							{curso?.Titulo}
-						</Text>
+						<Flex alignItems={'center'}>
+							<Text
+								color={'#F5F5F5'}
+								fontFamily={'Arial'}
+								fontSize={'30px'}
+								fontWeight={'700'}
+								lineHeight={'normal'}
+								marginRight={'2vw'}
+							>
+								{curso?.Titulo}
+							</Text>
+							<ModalCursoEdit curso={curso} />
+						</Flex>
 						<Text color={'#F000AD'} fontWeight={'600'}>
 							Top rating / 5000XP
 						</Text>
 					</Flex>
-					<ModalCursoEdit curso={curso} />
 					<Button
 						variant={'outline'}
 						borderColor={'#00FFF0'}

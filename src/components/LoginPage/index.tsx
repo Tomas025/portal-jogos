@@ -54,7 +54,7 @@ export const LoginPage = () => {
 					'portal-jogos.token',
 					response.data.access_token,
 					{
-						maxAge: 60 * 60 * 1 // 1 hour
+						maxAge: 60 * 60 * 24 * 1 // 1 day
 					}
 				);
 				toast({

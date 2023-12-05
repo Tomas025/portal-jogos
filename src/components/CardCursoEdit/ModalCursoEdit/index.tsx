@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-// import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FiEdit3 } from 'react-icons/fi';
@@ -22,7 +22,8 @@ import {
 	useToast,
 	Heading,
 	FormControl,
-	Input
+	Input,
+	Textarea
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { api } from 'services/api';
@@ -37,6 +38,7 @@ const courseSchema = yup.object().shape({
 
 export function ModalCursoEdit({ curso }: { curso: Curso }) {
 	const { isOpen, onOpen, onClose } = useDisclosure();
+	const { push } = useRouter();
 	const [editTitle, setEditTitle] = useState(false);
 	const [editDescription, setEditDescription] = useState(false);
 	const Toast = useToast();
@@ -63,9 +65,11 @@ export function ModalCursoEdit({ curso }: { curso: Curso }) {
 			Descricao: description
 		})
 			.then(() => {
+				push('/listCursos');
 				Toast({
 					title: 'Curso atualizado com sucesso',
 					status: 'success',
+					position: 'top',
 					duration: 3000,
 					isClosable: true
 				});
@@ -74,6 +78,7 @@ export function ModalCursoEdit({ curso }: { curso: Curso }) {
 				Toast({
 					title: 'Erro ao atualizar o curso',
 					status: 'error',
+					position: 'top',
 					duration: 3000,
 					isClosable: true
 				});
@@ -82,22 +87,12 @@ export function ModalCursoEdit({ curso }: { curso: Curso }) {
 
 	return (
 		<>
-			<Button
-				variant={'outline'}
-				borderColor={'#00FFF0'}
-				rounded={'5'}
-				color={'#00FFF0'}
-				_hover={{
-					backgroundColor: '#00FFF0',
-					color: '#0e0b1c'
-				}}
-				width={{ lg: '18.9375rem' }}
-				height={{ lg: '6rem' }}
-				fontSize={{ lg: '2.125rem' }}
+			<FiEdit3
 				onClick={onOpen}
-			>
-				<FiEdit3 />
-			</Button>
+				size={40}
+				color={'#C98DF9'}
+				cursor={'pointer'}
+			/>
 			<Modal
 				isCentered
 				onClose={onClose}
@@ -128,7 +123,7 @@ export function ModalCursoEdit({ curso }: { curso: Curso }) {
 							width={'778'}
 						/>
 						<ModalHeader>
-							<Flex>
+							<Flex alignItems={'center'}>
 								{editTitle == true ? (
 									<FormControl>
 										<Input
@@ -140,35 +135,42 @@ export function ModalCursoEdit({ curso }: { curso: Curso }) {
 										/>
 									</FormControl>
 								) : (
-									<Heading>{watch('title')}</Heading>
+									<Heading marginRight={'1vw'}>
+										{watch('title')}
+									</Heading>
 								)}
-								{errors.title?.message ? (
-									<Text as={'b'} color={'red'}>
-										{errors.title.message}
-									</Text>
-								) : null}
 								<FiEdit3
 									onClick={() => setEditTitle(!editTitle)}
+									size={30}
+									color={'#C98DF9'}
+									cursor={'pointer'}
 								/>
 							</Flex>
+							{errors.title?.message ? (
+								<Text as={'b'} color={'red'}>
+									{errors.title.message}
+								</Text>
+							) : null}
 						</ModalHeader>
 						<ModalCloseButton />
-						<ModalBody height={'591px'}>
-							<Flex>
+						<ModalBody height={'400px'}>
+							<Flex flexDir={'column'} alignItems={'flex-end'}>
 								{editDescription == true ? (
-									<FormControl>
-										<Input
+									<FormControl alignSelf={'flex-start'}>
+										<Textarea
+											height={'300px'}
 											color={'white'}
 											_focus={{ borderColor: '#F000AD' }}
-											type="text"
 											placeholder={
 												'Digite a nova descrição'
 											}
 											{...register('description')}
+											resize={'none'}
 										/>
 									</FormControl>
 								) : (
 									<Text
+										alignSelf={'flex-start'}
 										textAlign={{
 											base: 'start',
 											md: 'start',
@@ -180,7 +182,11 @@ export function ModalCursoEdit({ curso }: { curso: Curso }) {
 									</Text>
 								)}
 								{errors.description?.message ? (
-									<Text as={'b'} color={'red'}>
+									<Text
+										alignSelf={'flex-start'}
+										as={'b'}
+										color={'red'}
+									>
 										{errors.description.message}
 									</Text>
 								) : null}
@@ -188,10 +194,13 @@ export function ModalCursoEdit({ curso }: { curso: Curso }) {
 									onClick={() =>
 										setEditDescription(!editDescription)
 									}
+									size={30}
+									color={'#C98DF9'}
+									cursor={'pointer'}
 								/>
 							</Flex>
 						</ModalBody>
-						<ModalFooter justifyContent={'left'}>
+						<ModalFooter justifyContent={'flex-start'}>
 							<Flex flexDir={'column'} gap={4}>
 								<Flex>
 									<Text
