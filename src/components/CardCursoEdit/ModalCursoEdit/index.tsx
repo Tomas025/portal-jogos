@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import Link from 'next/link';
+// import Link from 'next/link';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FiEdit3 } from 'react-icons/fi';
@@ -35,7 +35,7 @@ const courseSchema = yup.object().shape({
 	description: yup.string().required('Campo obrigatório')
 });
 
-export function ModalCursoEdit(curso: Curso) {
+export function ModalCursoEdit({ curso }: { curso: Curso }) {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const [editTitle, setEditTitle] = useState(false);
 	const [editDescription, setEditDescription] = useState(false);
@@ -49,8 +49,8 @@ export function ModalCursoEdit(curso: Curso) {
 	} = useForm({
 		resolver: yupResolver(courseSchema),
 		defaultValues: {
-			title: curso.Titulo,
-			description: curso.Descricao
+			title: curso?.Titulo,
+			description: curso?.Descricao
 		}
 	});
 
@@ -147,7 +147,9 @@ export function ModalCursoEdit(curso: Curso) {
 										{errors.title.message}
 									</Text>
 								) : null}
-								<FiEdit3 onClick={setEditTitle(!editTitle)} />
+								<FiEdit3
+									onClick={() => setEditTitle(!editTitle)}
+								/>
 							</Flex>
 						</ModalHeader>
 						<ModalCloseButton />
@@ -183,20 +185,13 @@ export function ModalCursoEdit(curso: Curso) {
 									</Text>
 								) : null}
 								<FiEdit3
-									onClick={setEditDescription(
-										!editDescription
-									)}
+									onClick={() =>
+										setEditDescription(!editDescription)
+									}
 								/>
 							</Flex>
 						</ModalBody>
 						<ModalFooter justifyContent={'left'}>
-							{1 < 0 && (
-								<Button variant={'link'} colorScheme="white">
-									<Link href={'Aqui vai o link do beneficio'}>
-										Acessar
-									</Link>
-								</Button>
-							)}
 							<Flex flexDir={'column'} gap={4}>
 								<Flex>
 									<Text

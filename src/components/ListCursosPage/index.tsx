@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 
-import CardCurso from 'components/CardCurso';
+import { CardCursoEdit } from 'components/CardCursoEdit';
 
 import { Box, Flex, Heading } from '@chakra-ui/react';
 import { api } from 'services/api';
@@ -80,7 +80,11 @@ export default function ListCursosPage() {
 					{loading && <p>Loading...</p>}
 					{error && <p>Erro ao carregar os cursos</p>}
 					{!loading && !error && (
-						<>{cursos.map((curso) => CardCurso(curso))}</>
+						<>
+							{cursos.map((curso) => (
+								<CardCursoEdit curso={curso} key={curso.Id} />
+							))}
+						</>
 					)}
 				</Flex>
 			</Flex>

@@ -66,7 +66,8 @@ export const LoginPage = () => {
 					duration: 5000,
 					isClosable: true
 				});
-				setTimeout(redirect, 1000);
+				// setTimeout(redirect, 1000);
+				redirect();
 			})
 			.catch((error) => {
 				console.log(error);

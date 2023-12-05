@@ -6,7 +6,7 @@ import { Card, CardBody, Text, Flex, Button } from '@chakra-ui/react';
 
 import { ModalCursoEdit } from './ModalCursoEdit';
 
-export default function CardCurso(curso: Curso) {
+export function CardCursoEdit({ curso }: { curso: Curso }) {
 	return (
 		<Card
 			bg={'#120E27'}
@@ -36,13 +36,13 @@ export default function CardCurso(curso: Curso) {
 							fontWeight={'700'}
 							lineHeight={'normal'}
 						>
-							{curso.Titulo}
+							{curso?.Titulo}
 						</Text>
 						<Text color={'#F000AD'} fontWeight={'600'}>
 							Top rating / 5000XP
 						</Text>
 					</Flex>
-					<ModalCursoEdit {...curso} />
+					<ModalCursoEdit curso={curso} />
 					<Button
 						variant={'outline'}
 						borderColor={'#00FFF0'}
