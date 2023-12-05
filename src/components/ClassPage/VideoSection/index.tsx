@@ -77,11 +77,8 @@ export default function VideoSection({ aula }: VideoSectionProps) {
 								Concluir aula
 							</Button>
 							<Flex gap={3}>
-								<FiThumbsUp size="25" className={styles.Icon} />
-								<FiThumbsDown
-									size="25"
-									className={styles.Icon}
-								/>
+								<FiThumbsUp size="25" color={'#12E300'} />
+								<FiThumbsDown size="25" color={'#F00'} />
 							</Flex>
 						</Flex>
 					</Flex>

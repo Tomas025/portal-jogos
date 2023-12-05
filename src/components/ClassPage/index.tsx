@@ -25,7 +25,11 @@ export default function ClassPage() {
 	}, []);
 
 	return (
-		<Box width={'100%'} height={'100vh'}>
+		<Box
+			width={'100%'}
+			height={'100vh'}
+			backgroundImage={"url('/img/bgHeroSection.png')"}
+		>
 			<Flex
 				width={'100vw'}
 				height={'100vh'}
@@ -43,7 +47,6 @@ export default function ClassPage() {
 					alignItems={'center'}
 					gap={4}
 					padding={'35px'}
-					overflow={'hidden'}
 				>
 					{modulos?.map((modulo) => (
 						<CardAulas
@@ -64,9 +67,6 @@ export default function ClassPage() {
 						display={'flex'}
 					>
 						<VideoSection aula={aula} />
-						{/* {aula?.Id && (
-							<ComplementaryMaterial aulaId={aula?.Id} />
-						)} */}
 					</Box>
 				</Flex>
 			</Flex>

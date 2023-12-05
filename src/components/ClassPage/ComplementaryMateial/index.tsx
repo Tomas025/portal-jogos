@@ -52,7 +52,7 @@ export default function ComplementaryMaterial({ aulaId }: Props) {
 							<Flex alignItems={'center'} gap={1}>
 								{material.Nome}
 
-								<FiLink color={'red'} />
+								<FiLink color={'#00FFF0'} />
 							</Flex>
 						</Link>
 					</Flex>
