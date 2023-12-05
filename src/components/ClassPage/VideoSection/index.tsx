@@ -71,7 +71,7 @@ export default function VideoSection({ aula }: VideoSectionProps) {
 					</Flex>
 				</Flex>
 			) : (
-				<Text>.</Text>
+				<></>
 			)}
 		</Flex>
 	);
