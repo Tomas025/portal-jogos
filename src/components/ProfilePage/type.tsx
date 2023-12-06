@@ -3,7 +3,6 @@ type result = {
 	Nome: string;
 	Email: string;
 	Username: string;
-	Canal: string;
 	UrlAvatar: string;
 	YouTube: string;
 	Discord: string;
@@ -12,6 +11,7 @@ type result = {
 	Github: string;
 	Twitter: string;
 	Tipo: string;
+	Sobre: string;
 	XP: number;
 	patenteId: number;
 };

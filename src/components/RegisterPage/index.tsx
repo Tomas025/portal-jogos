@@ -84,8 +84,8 @@ export const RegisterPage = () => {
 					duration: 5000,
 					isClosable: true
 				});
-
-				setTimeout(redirect, 2000);
+				redirect();
+				// setTimeout(redirect, 2000);
 			})
 			.catch((error) => {
 				console.log(error);

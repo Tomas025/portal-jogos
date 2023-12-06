@@ -68,7 +68,7 @@ export const ProfilePage = () => {
 			instagram: user?.result?.Instagram || '',
 			github: user?.result?.Github || '',
 			twitter: user?.result?.Twitter || '',
-			about: ''
+			about: user?.result?.Sobre
 		}
 	});
 
@@ -80,8 +80,8 @@ export const ProfilePage = () => {
 		linkedin,
 		instagram,
 		github,
-		twitter
-		// about
+		twitter,
+		about
 	}) => {
 		api.patch(`/pessoa/${user?.result?.Id}`, {
 			Nome: userName,
@@ -91,8 +91,8 @@ export const ProfilePage = () => {
 			Linkedin: linkedin,
 			Instagram: instagram,
 			Github: github,
-			Twitter: twitter
-			// Sobre: about
+			Twitter: twitter,
+			Sobre: about
 		})
 			.then(() => {
 				toast({
@@ -137,15 +137,16 @@ export const ProfilePage = () => {
 						<Flex
 							rounded={'full'}
 							overflow={'hidden'}
-							backgroundColor={'#d3d3d3'}
 							width={'160px'}
 							height={'160px'}
 						>
 							<Avatar
-								src={'/img/profile.jpeg'}
+								name={watch('userName')}
+								// fontSize={'2rem'}
+								size={'2xl'}
+								backgroundColor={'#9E2600'}
 								width={'160px'}
 								height={'160px'}
-								name={'Foto de perfil'}
 							/>
 						</Flex>
 						<Box textAlign={'center'} marginTop={'10%'}>
