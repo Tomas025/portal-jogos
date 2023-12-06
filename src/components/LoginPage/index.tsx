@@ -33,7 +33,7 @@ export const LoginPage = () => {
 	const { push } = useRouter();
 
 	function redirect() {
-		push('/profile');
+		push('/dashboard');
 	}
 
 	const {

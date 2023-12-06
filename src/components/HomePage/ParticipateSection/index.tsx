@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { Button, Heading, Flex, Text } from '@chakra-ui/react';
 
 export const ParticipateSection = () => {
@@ -38,7 +40,7 @@ export const ParticipateSection = () => {
 				fontSize={'2rem'}
 				fontWeight={'bold'}
 			>
-				Colabore
+				<Link href="/login">Colabore</Link>
 			</Button>
 		</Flex>
 	);

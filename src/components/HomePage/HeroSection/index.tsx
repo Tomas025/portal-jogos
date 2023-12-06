@@ -1,5 +1,7 @@
 // import { WithSubnavigation } from 'components/NavBar';
 
+import Link from 'next/link';
+
 import { Flex, Box, Text, Button } from '@chakra-ui/react';
 
 import styles from './styles.module.scss';
@@ -38,7 +40,7 @@ export const HeroSection = () => {
 					fontSize={'2rem'}
 					fontWeight={'bold'}
 				>
-					Entre Agora
+					<Link href="/login">Entre Agora</Link>
 				</Button>
 			</Flex>
 		</Box>
