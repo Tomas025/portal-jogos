@@ -48,10 +48,14 @@ export default function VideoSection({ aula }: VideoSectionProps) {
 					justifyContent={'flex-start'}
 					width={'100%'}
 				>
-					<Text fontSize={'1.25rem'} fontWeight={400}>
+					<Text
+						fontSize={'1.25rem'}
+						fontWeight={400}
+						color={'#f5f5f5'}
+					>
 						Modulo 1 | Desenvolvimento de jogos 2D em Unity
 					</Text>
-					<Heading>
+					<Heading color={'#f5f5f5'}>
 						Aula {aula.Sequencia} | {aula.Titulo}
 					</Heading>
 					<Text
@@ -80,7 +84,7 @@ export default function VideoSection({ aula }: VideoSectionProps) {
 						height={'100%'}
 						justifyContent={'space-between'}
 					>
-						<Flex height={'18vh'}>
+						<Flex height={'18vh'} color={'#f5f5f5'}>
 							<Text>{aula.Descricao}</Text>
 						</Flex>
 						<Flex

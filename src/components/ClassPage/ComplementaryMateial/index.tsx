@@ -33,7 +33,12 @@ export default function ComplementaryMaterial({ aulaId }: Props) {
 			justifyContent={'flex-start'}
 			alignItems={'center'}
 		>
-			<Heading fontSize={'1.125rem'} fontWeight={'500'} marginTop={'2vh'}>
+			<Heading
+				fontSize={'1.125rem'}
+				fontWeight={'500'}
+				marginTop={'2vh'}
+				color={'#f5f5f5'}
+			>
 				Materiais Complementares
 			</Heading>
 			<Flex
@@ -49,7 +54,11 @@ export default function ComplementaryMaterial({ aulaId }: Props) {
 						gap={4}
 					>
 						<Link href={material.URL} isExternal>
-							<Flex alignItems={'center'} gap={1}>
+							<Flex
+								alignItems={'center'}
+								gap={1}
+								color={'#f5f5f5'}
+							>
 								{material.Nome}
 
 								<FiLink color={'#00FFF0'} />
