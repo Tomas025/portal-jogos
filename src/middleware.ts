@@ -22,5 +22,11 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-	matcher: ['/profile', '/dashboardStudent', '/listCursos', '/class/:path*']
+	matcher: [
+		'/profile',
+		'/dashboard',
+		'/listCursos',
+		'/class/:path*',
+		'/myCourses'
+	]
 };

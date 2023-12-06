@@ -1,7 +1,14 @@
+'use client';
+import { useState } from 'react';
 import { FiThumbsUp } from 'react-icons/fi';
 import { FiThumbsDown } from 'react-icons/fi';
 
-import { Flex, Text, Heading, Button } from '@chakra-ui/react';
+import { userProps } from 'components/ProfilePage/type';
+
+import { Flex, Text, Heading, Button, useToast } from '@chakra-ui/react';
+import { jwtDecode } from 'jwt-decode';
+import { parseCookies } from 'nookies';
+import { api } from 'services/api';
 
 import ComplementaryMaterial from '../ComplementaryMateial';
 import { Aula } from '../type';
@@ -12,6 +19,27 @@ interface VideoSectionProps {
 }
 
 export default function VideoSection({ aula }: VideoSectionProps) {
+	const { 'portal-jogos.token': token } = parseCookies();
+
+	const [user] = useState<userProps | null>(jwtDecode(token) || null);
+	const toast = useToast();
+
+	const upXP = () => {
+		api.patch(`/pessoas/${user?.result?.Id}`, { XP: aula?.XP })
+			.then(() => {
+				toast({
+					title: 'XP atualizado com sucesso!',
+					status: 'success',
+					position: 'top',
+					duration: 2000,
+					isClosable: true
+				});
+				console.log('XP atualizado');
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
 	return (
 		<Flex width={'100%'}>
 			{aula ? (
@@ -73,6 +101,7 @@ export default function VideoSection({ aula }: VideoSectionProps) {
 								width={{ lg: '14rem' }}
 								height={{ lg: '3rem' }}
 								fontSize={{ lg: '1.5rem' }}
+								onClick={upXP}
 							>
 								Concluir aula
 							</Button>

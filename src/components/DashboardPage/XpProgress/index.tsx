@@ -23,6 +23,8 @@ export default function XpProgress() {
 		setXP(user?.result?.XP || 0);
 	}, [user?.result?.XP]);
 
+	console.log(user?.result?.XP);
+
 	return (
 		<Flex justifyContent={'center'} alignItems={'center'}>
 			<Card

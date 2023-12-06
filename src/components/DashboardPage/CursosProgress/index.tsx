@@ -34,7 +34,7 @@ export default function CursosProgress() {
 		try {
 			const response = await api.get('/cursos/progresso/pessoaId/3');
 			setCursos(response.data);
-			console.log(response.data);
+			// console.log(response.data);
 		} catch (error) {
 			console.error(error);
 			alert('Erro ao carregar cursos');

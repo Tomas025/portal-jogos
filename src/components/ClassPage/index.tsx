@@ -9,7 +9,7 @@ import { CardAulas } from './CardModule';
 import { Aula, Modulo } from './type';
 import VideoSection from './VideoSection';
 
-export default function ClassPage() {
+export default function ClassPage({ classId }: { classId: string }) {
 	const [aula, setAula] = useState<Aula>();
 	const [modulos, setModulos] = useState<Modulo[]>();
 
@@ -19,7 +19,7 @@ export default function ClassPage() {
 
 	useEffect(() => {
 		(async () => {
-			const response = await api.get('/modulos/cursoId/3');
+			const response = await api.get(`/modulos/cursoId/${classId}`);
 			setModulos(response.data);
 		})();
 	}, []);
@@ -50,6 +50,7 @@ export default function ClassPage() {
 				>
 					{modulos?.map((modulo) => (
 						<CardAulas
+							classId={classId}
 							key={modulo.Id}
 							onAulaChange={handleAulaChange}
 							{...modulo}

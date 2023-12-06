@@ -10,10 +10,15 @@ import { Aula, Modulo } from '../type';
 import styles from './styles.module.scss';
 
 interface CardAulasProps extends Modulo {
+	classId: string;
 	onAulaChange: (novaAula: Aula) => void;
 }
 
-export function CardAulas({ onAulaChange, ...modulo }: CardAulasProps) {
+export function CardAulas({
+	classId,
+	onAulaChange,
+	...modulo
+}: CardAulasProps) {
 	const [aulas, setAulas] = useState<Aula[]>([]);
 	const [expandido, setExpandido] = useState(false);
 
@@ -82,7 +87,7 @@ export function CardAulas({ onAulaChange, ...modulo }: CardAulasProps) {
 								lineHeight={'normal'}
 							>
 								<Link
-									href={'/class'}
+									href={`/class/${classId}`}
 									onClick={() => handleAulaClick(aula)}
 								>
 									Aula {aula.Sequencia} | {aula.Titulo}
