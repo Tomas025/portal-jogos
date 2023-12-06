@@ -32,7 +32,7 @@ export default function CursosProgress() {
 
 	const fetchData = async () => {
 		try {
-			const response = await api.get('/cursos/progresso/pessoaId/3');
+			const response = await api.get('/cursos/progresso/pessoaId/1');
 			setCursos(response.data);
 			// console.log(response.data);
 		} catch (error) {
