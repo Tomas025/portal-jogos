@@ -1,6 +1,4 @@
-import Link from 'next/link';
-
-import { Button, Flex, Heading, Text } from '@chakra-ui/react';
+import { Flex, Heading, Text } from '@chakra-ui/react';
 
 import { Card } from './Card';
 
@@ -9,40 +7,42 @@ const cardsProps = [
 		icon: 'book',
 		title: 'Planejamento',
 		description:
-			'Os primeiros passos da concepção do jogo. Você aprenderá sobre gênero, estilo, roteiro e etc.'
+			'Definir os objetivos do jogo, o público-alvo, o gênero e o estilo de jogo, além de recursos necessários, como equipe, orçamento e cronograma.'
 	},
 	{
 		icon: 'pen',
 		title: 'Design',
 		description:
-			'Tudo sobre o design, seja de mundo, personagens, objetos ou qualquer outra coisa.'
+			'Definir os elementos do jogo, incluindo história, personagens, cenários, jogabilidade e interface do usuário.'
 	},
 	{
 		icon: 'airplay',
 		title: 'Codificação',
 		description:
-			'Colocar o jogo no mundo, você aprenderá sobre diversas ferramentas e linguagens de forma prática.'
+			'Implementar os elementos do jogo definidos na etapa de design.'
 	}
 ];
 
-export const AboutSection = () => {
+export const HowIsSection = () => {
 	return (
 		<Flex
 			flexDir={'column'}
 			width={'100%'}
-			backgroundImage={'linear-gradient(#401336 0%, #38102f 100%)'}
+			backgroundColor={'#411237'}
 			paddingY={'2%'}
 			paddingInline={'8%'}
+			alignItems={'center'}
 		>
 			<Heading
 				as={'b'}
-				fontSize={'90px'}
+				fontSize={'75px'}
 				color={'white'}
 				textDecoration={'underline #C329FFCC'}
+				padding={'15px'}
 			>
-				Sobre
+				Como um jogo é criado?
 			</Heading>
-			<Text as={'b'} fontSize={'38px'} color={'white'}>
+			<Text as={'b'} fontSize={'25px'} color={'white'}>
 				Aqui você aprenderá sobre jogos e seus processos de
 				desenvolvimento:
 			</Text>
@@ -56,16 +56,6 @@ export const AboutSection = () => {
 					/>
 				))}
 			</Flex>
-			<Button
-				width={'20%'}
-				height={'7vh'}
-				rounded={'full'}
-				alignSelf={'center'}
-				fontSize={'2rem'}
-				fontWeight={'bold'}
-			>
-				<Link href={'/informations'}>Saiba Mais</Link>
-			</Button>
 		</Flex>
 	);
 };

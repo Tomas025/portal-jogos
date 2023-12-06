@@ -83,7 +83,7 @@ export const ProfilePage = () => {
 		twitter,
 		about
 	}) => {
-		api.patch(`/pessoa/${user?.result?.Id}`, {
+		api.patch(`/pessoas/${user?.result?.Id}`, {
 			Nome: userName,
 			Username: tagName,
 			YouTube: youtube,
@@ -98,6 +98,7 @@ export const ProfilePage = () => {
 				toast({
 					title: 'Perfil atualizado com sucesso',
 					status: 'success',
+					position: 'top',
 					duration: 3000,
 					isClosable: true
 				});
@@ -106,6 +107,7 @@ export const ProfilePage = () => {
 				toast({
 					title: 'Erro ao atualizar perfil',
 					status: 'error',
+					position: 'top',
 					duration: 3000,
 					isClosable: true
 				});
