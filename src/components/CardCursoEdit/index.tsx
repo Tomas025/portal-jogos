@@ -16,6 +16,7 @@ export function CardCursoEdit({ curso }: { curso: Curso }) {
 			borderTop={'34px solid #2A2156'}
 			justifyContent={'center'}
 			alignItems={'center'}
+			marginTop={'20px'}
 		>
 			<CardBody
 				width={{ lg: '1591px' }}
@@ -49,12 +50,15 @@ export function CardCursoEdit({ curso }: { curso: Curso }) {
 					<Button
 						variant={'outline'}
 						borderColor={'#00FFF0'}
-						rounded={'0'}
+						rounded={'5'}
 						color={'#00FFF0'}
 						_hover={{
 							backgroundColor: '#00FFF0',
 							color: '#0e0b1c'
 						}}
+						width={{ lg: '18.9375rem' }}
+						height={{ lg: '6rem' }}
+						fontSize={{ lg: '1.5rem' }}
 					>
 						<Link href={'/beneficios'}>Adicionar Conteúdo +</Link>
 					</Button>

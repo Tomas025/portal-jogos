@@ -23,9 +23,7 @@ export default function MyCoursesPage() {
 		if (user) {
 			(async () => {
 				try {
-					const response = await api.get(
-						`cursos/progresso/pessoaId/${user?.result?.Id}`
-					);
+					const response = await api.get(`cursos/`);
 					setCursos(response.data);
 				} catch (error) {
 					console.error(error);
