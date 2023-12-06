@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 
 import { CardCursoEdit } from 'components/CardCursoEdit';
+import { WithSubnavigation } from 'components/NavBar';
 
 import { Box, Flex, Heading } from '@chakra-ui/react';
 import { api } from 'services/api';
@@ -61,6 +62,7 @@ export default function ListCursosPage() {
 
 	return (
 		<Box backgroundImage={"url('/img/bgHeroSection.png')"}>
+			<WithSubnavigation />
 			<Flex
 				width={'100vw'}
 				height={'100vh'}

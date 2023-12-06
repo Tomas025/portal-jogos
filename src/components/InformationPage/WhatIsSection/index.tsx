@@ -1,4 +1,4 @@
-// import { WithSubnavigation } from 'components/NavBar';
+import { WithSubnavigation } from 'components/NavBar';
 
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 
@@ -13,7 +13,7 @@ export const WhatIsSection = () => {
 			alignItems={'center'}
 			//backgroundColor={'#4B1A41'}
 		>
-			{/* <WithSubnavigation /> */}
+			<WithSubnavigation />
 			<Flex
 				width={'100%'}
 				minHeight={'80vh'}

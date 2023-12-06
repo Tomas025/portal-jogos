@@ -1,3 +1,5 @@
+import { WithSubnavigation } from 'components/NavBar';
+
 import { Box, Flex, Grid, GridItem } from '@chakra-ui/react';
 
 import CursosProgress from './CursosProgress';
@@ -6,6 +8,7 @@ import XpProgress from './XpProgress';
 export default function DashboardStudentPage() {
 	return (
 		<Box backgroundImage={"url('/img/bgHeroSection.png')"}>
+			<WithSubnavigation />
 			<Flex>
 				<Grid
 					templateRows="repeat(2, 2fr)"

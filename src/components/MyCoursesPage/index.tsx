@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 import { CardCursoEdit } from 'components/CardCursoEdit';
 import { Curso } from 'components/ListCursosPage/type';
+import { WithSubnavigation } from 'components/NavBar';
 import { userProps } from 'components/ProfilePage/type';
 
 import { Box, Flex, Heading } from '@chakra-ui/react';
@@ -38,6 +39,7 @@ export default function MyCoursesPage() {
 
 	return (
 		<Box backgroundImage={"url('/img/bgHeroSection.png')"}>
+			<WithSubnavigation />
 			<Flex
 				width={'100vw'}
 				height={'100vh'}

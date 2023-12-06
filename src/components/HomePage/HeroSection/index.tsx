@@ -1,6 +1,6 @@
-// import { WithSubnavigation } from 'components/NavBar';
-
 import Link from 'next/link';
+
+import { WithSubnavigation } from 'components/NavBar';
 
 import { Flex, Box, Text, Button } from '@chakra-ui/react';
 
@@ -14,7 +14,7 @@ export const HeroSection = () => {
 			backgroundRepeat={'no-repeat'}
 			backgroundSize={'cover'}
 		>
-			{/* <WithSubnavigation /> */}
+			<WithSubnavigation />
 			<Flex
 				width={'100%'}
 				minHeight={'100vh'}
