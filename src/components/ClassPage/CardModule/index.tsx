@@ -72,6 +72,7 @@ export function CardAulas({ onAulaChange, ...modulo }: CardAulasProps) {
 						)}
 					</Flex>
 					{expandido &&
+						aulas &&
 						aulas?.map((aula) => (
 							<Text
 								key={aula.Id}

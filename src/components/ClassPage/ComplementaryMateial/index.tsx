@@ -8,65 +8,6 @@ import { api } from 'services/api';
 
 import { Material } from './type';
 
-// const materias: Material[] = [
-// 	{
-// 		Id: 1,
-// 		Nome: 'handguide.pdf',
-// 		Tipo: 'pdf',
-// 		URL: 'https://www.sbgames.org/sbgames2012/proceedings/papers/tutoriais/tutorial-05.pdf',
-// 		fk_Aula_Id: 1
-// 	},
-// 	{
-// 		Id: 2,
-// 		Nome: 'Programando na Unity 3D.pdf',
-// 		Tipo: 'pdf',
-// 		URL: 'https://profsalu.files.wordpress.com/2018/08/3-unity-3d-programac3a7c3a3o01.pdf',
-// 		fk_Aula_Id: 1
-// 	},
-// 	{
-// 		Id: 3,
-// 		Nome: 'playground.pdf',
-// 		Tipo: 'pdf',
-// 		URL: 'https://profsalu.files.wordpress.com/2018/08/3-unity-3d-programac3a7c3a3o01.pdf',
-// 		fk_Aula_Id: 1
-// 	},
-// 	{
-// 		Id: 4,
-// 		Nome: 'playground.pdf',
-// 		Tipo: 'pdf',
-// 		URL: 'https://profsalu.files.wordpress.com/2018/08/3-unity-3d-programac3a7c3a3o01.pdf',
-// 		fk_Aula_Id: 2
-// 	},
-// 	{
-// 		Id: 5,
-// 		Nome: 'playground.pdf',
-// 		Tipo: 'pdf',
-// 		URL: 'https://profsalu.files.wordpress.com/2018/08/3-unity-3d-programac3a7c3a3o01.pdf',
-// 		fk_Aula_Id: 3
-// 	},
-// 	{
-// 		Id: 6,
-// 		Nome: 'playground.pdf',
-// 		Tipo: 'pdf',
-// 		URL: 'https://profsalu.files.wordpress.com/2018/08/3-unity-3d-programac3a7c3a3o01.pdf',
-// 		fk_Aula_Id: 4
-// 	},
-// 	{
-// 		Id: 7,
-// 		Nome: 'playground.pdf',
-// 		Tipo: 'pdf',
-// 		URL: 'https://profsalu.files.wordpress.com/2018/08/3-unity-3d-programac3a7c3a3o01.pdf',
-// 		fk_Aula_Id: 5
-// 	},
-// 	{
-// 		Id: 8,
-// 		Nome: 'playground.pdf',
-// 		Tipo: 'pdf',
-// 		URL: 'https://profsalu.files.wordpress.com/2018/08/3-unity-3d-programac3a7c3a3o01.pdf',
-// 		fk_Aula_Id: 6
-// 	}
-// ];
-
 interface Props {
 	aulaId: number | undefined;
 }
@@ -84,8 +25,8 @@ export default function ComplementaryMaterial({ aulaId }: Props) {
 	return (
 		<Flex
 			bg="#ff000000"
-			width={'255px'}
-			height={'389px'}
+			width={'13.2vw'}
+			// height={'389px'}
 			border={'1px solid #00FFF0'}
 			rounded={'12px'}
 			flexDirection={'column'}
@@ -111,7 +52,7 @@ export default function ComplementaryMaterial({ aulaId }: Props) {
 							<Flex alignItems={'center'} gap={1}>
 								{material.Nome}
 
-								<FiLink color={'red'} />
+								<FiLink color={'#00FFF0'} />
 							</Flex>
 						</Link>
 					</Flex>

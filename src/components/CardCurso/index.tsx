@@ -14,6 +14,7 @@ export default function CardCurso(curso: Curso) {
 			borderTop={'34px solid #2A2156'}
 			justifyContent={'center'}
 			alignItems={'center'}
+			marginTop={'20px'}
 		>
 			<CardBody
 				width={{ lg: '1591px' }}
