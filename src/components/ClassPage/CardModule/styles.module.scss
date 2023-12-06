@@ -1,0 +1,19 @@
+.expanded {
+	height: 15rem !important;
+	transition:
+		height 0.5s ease-in-out,
+		padding 0.3s ease-in-out;
+}
+
+.collapsed {
+	height: 5rem !important;
+	padding: 0;
+	transition:
+		height 0.3s ease-in-out,
+		padding 0.3s ease-in-out;
+}
+
+.Icon {
+	font-size: 2rem;
+	color: #F000AD;
+}
