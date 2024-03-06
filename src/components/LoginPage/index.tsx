@@ -32,10 +32,6 @@ export const LoginPage = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const { push } = useRouter();
 
-	function redirect() {
-		push('/dashboard');
-	}
-
 	const {
 		register,
 		handleSubmit,
@@ -60,7 +56,7 @@ export const LoginPage = () => {
 					isClosable: true
 				});
 				// setTimeout(redirect, 1000);
-				redirect();
+				push('/dashboard');
 			})
 			.catch((error) => {
 				console.log(error);

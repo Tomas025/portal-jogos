@@ -2,7 +2,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 export const api = axios.create({
-	baseURL: 'http://localhost:3333'
+	baseURL: 'http://0.tcp.sa.ngrok.io:14885'
 });
 
 const myUser = Cookies.get('user');

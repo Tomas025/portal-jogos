@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Heading, Spinner } from '@chakra-ui/react';
 import { api } from 'services/api';
 
 import { CardAulas } from './CardModule';
@@ -44,10 +44,12 @@ export default function ClassPage({ classId }: { classId: string }) {
 					rounded={'21px'}
 					bg={'#120E27'} //pra depois
 					flexDir={'column'}
+					justifyContent={'center'}
 					alignItems={'center'}
 					gap={4}
 					padding={'35px'}
 				>
+					{!modulos && <Spinner color="purple" size="xl" />}
 					{modulos?.map((modulo) => (
 						<CardAulas
 							classId={classId}
@@ -67,7 +69,25 @@ export default function ClassPage({ classId }: { classId: string }) {
 						paddingY={'2vh'}
 						display={'flex'}
 					>
-						<VideoSection aula={aula} />
+						{!aula && (
+							<Flex
+								width={'100%'}
+								height={'100%'}
+								alignItems={'center'}
+								justifyContent={'center'}
+							>
+								<Heading
+									as={'b'}
+									fontSize={'2rem'}
+									color={'white'}
+									textAlign={'center'}
+									opacity={0.4}
+								>
+									Selecione uma aula na lista ao lado
+								</Heading>
+							</Flex>
+						)}
+						{aula && <VideoSection aula={aula} />}
 					</Box>
 				</Flex>
 			</Flex>
