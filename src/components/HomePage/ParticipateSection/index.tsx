@@ -15,7 +15,7 @@ export const ParticipateSection = () => {
 		>
 			<Heading
 				as={'b'}
-				fontSize={'90px'}
+				fontSize={'3.5rem'}
 				color={'white'}
 				textDecoration={'underline #C329FFCC'}
 			>
@@ -23,7 +23,7 @@ export const ParticipateSection = () => {
 			</Heading>
 			<Text
 				as={'b'}
-				fontSize={'90px'}
+				fontSize={'3.5rem'}
 				color={'white'}
 				alignSelf={'center'}
 				width={'75%'}
@@ -33,8 +33,8 @@ export const ParticipateSection = () => {
 				seu curso!
 			</Text>
 			<Button
-				width={'20%'}
-				height={'7vh'}
+				width={'30%'}
+				height={'8vh'}
 				rounded={'full'}
 				alignSelf={'center'}
 				fontSize={'2rem'}

@@ -46,7 +46,7 @@ export const TeamSection = () => {
 		>
 			<Heading
 				as={'b'}
-				fontSize={'90px'}
+				fontSize={'3.5rem'}
 				color={'white'}
 				textDecoration={'underline #C329FFCC'}
 				alignSelf={'flex-start'}
@@ -72,20 +72,20 @@ export const TeamSection = () => {
 							rounded={'full'}
 							overflow={'hidden'}
 							backgroundColor={'#d3d3d3'}
-							width={'300px'}
-							height={'300px'}
+							width={'200px'}
+							height={'200px'}
 						>
 							<Image
 								src={item.photo}
-								width={'300'}
-								height={'300'}
+								width={'200'}
+								height={'200'}
 								alt={item.name}
 							/>
 						</Flex>
-						<Text as={'b'} fontSize={'38px'} color={'white'}>
+						<Text as={'b'} fontSize={'2rem'} color={'white'}>
 							{item.name}
 						</Text>
-						<Text as={'b'} fontSize={'38px'} color={'white'}>
+						<Text as={'b'} fontSize={'2rem'} color={'white'}>
 							{item.office}
 						</Text>
 					</Flex>
