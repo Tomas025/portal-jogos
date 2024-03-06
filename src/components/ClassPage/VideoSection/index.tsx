@@ -1,7 +1,11 @@
 'use client';
 import { useState } from 'react';
-import { FiThumbsUp } from 'react-icons/fi';
-import { FiThumbsDown } from 'react-icons/fi';
+import {
+	BsHandThumbsUp,
+	BsFillHandThumbsUpFill,
+	BsHandThumbsDown,
+	BsFillHandThumbsDownFill
+} from 'react-icons/bs';
 
 import { userProps } from 'components/ProfilePage/type';
 
@@ -21,6 +25,8 @@ interface VideoSectionProps {
 export default function VideoSection({ aula }: VideoSectionProps) {
 	const myUser = Cookies.get('user');
 	const [user] = useState<userProps | null>(jwtDecode(myUser!) || null);
+	const [like, setLike] = useState(false);
+	const [dislike, setDislike] = useState(false);
 	const toast = useToast();
 
 	const upXP = () => {
@@ -109,8 +115,41 @@ export default function VideoSection({ aula }: VideoSectionProps) {
 								Concluir aula
 							</Button>
 							<Flex gap={3}>
-								<FiThumbsUp size="25" color={'#12E300'} />
-								<FiThumbsDown size="25" color={'#F00'} />
+								<div onClick={() => setLike(!like)}>
+									{like && (
+										<BsFillHandThumbsUpFill
+											size="25"
+											color={'#12E300'}
+											cursor={'pointer'}
+										/>
+									)}
+									{!like && (
+										<BsHandThumbsUp
+											size="25"
+											color={'#12E300'}
+											cursor={'pointer'}
+										/>
+									)}
+								</div>
+								<div
+									style={{ transform: 'scaleX(-1)' }}
+									onClick={() => setDislike(!dislike)}
+								>
+									{dislike && (
+										<BsFillHandThumbsDownFill
+											size="25"
+											color={'#F00'}
+											cursor={'pointer'}
+										/>
+									)}
+									{!dislike && (
+										<BsHandThumbsDown
+											size="25"
+											color={'#F00'}
+											cursor={'pointer'}
+										/>
+									)}
+								</div>
 							</Flex>
 						</Flex>
 					</Flex>
