@@ -1,8 +1,11 @@
 'use client';
 import Link from 'next/link';
 
-import { Button, Flex, Text } from '@chakra-ui/react';
+import { userProps } from 'components/ProfilePage/type';
+
+import { Avatar, Box, Button, Flex, Text } from '@chakra-ui/react';
 import Cookies from 'js-cookie';
+import { jwtDecode } from 'jwt-decode';
 
 const navItems = [
 	{ label: 'Home', href: '/' },
@@ -18,6 +21,7 @@ const navItemsUser = [
 
 export const WithSubnavigation = () => {
 	const myUser = Cookies.get('user');
+	const user = jwtDecode<userProps>(myUser!);
 
 	return (
 		<Flex
@@ -49,6 +53,21 @@ export const WithSubnavigation = () => {
 					</>
 				)}
 			</Flex>
+			{myUser && (
+				<Flex alignItems={'center'} gap={'5'}>
+					<Box textAlign={'end'}>
+						<Text as={'b'} fontSize={'xl'}>
+							{user.result.Username}
+						</Text>
+						<Text color={'gray'}>{user.result.Nome}</Text>
+					</Box>
+					<Avatar
+						size={'lg'}
+						name={user.result.Nome}
+						src={user.result.UrlAvatar}
+					/>
+				</Flex>
+			)}
 			{!myUser && (
 				<Button
 					variant={'outline'}
