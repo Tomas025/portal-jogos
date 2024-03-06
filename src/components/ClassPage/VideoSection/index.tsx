@@ -115,7 +115,14 @@ export default function VideoSection({ aula }: VideoSectionProps) {
 								Concluir aula
 							</Button>
 							<Flex gap={3}>
-								<div onClick={() => setLike(!like)}>
+								<div
+									onClick={() => {
+										setLike(!like);
+										if (dislike) {
+											setDislike(false);
+										}
+									}}
+								>
 									{like && (
 										<BsFillHandThumbsUpFill
 											size="25"
@@ -133,7 +140,12 @@ export default function VideoSection({ aula }: VideoSectionProps) {
 								</div>
 								<div
 									style={{ transform: 'scaleX(-1)' }}
-									onClick={() => setDislike(!dislike)}
+									onClick={() => {
+										setDislike(!dislike);
+										if (like) {
+											setLike(false);
+										}
+									}}
 								>
 									{dislike && (
 										<BsFillHandThumbsDownFill
