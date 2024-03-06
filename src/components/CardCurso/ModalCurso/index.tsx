@@ -20,16 +20,15 @@ import {
 	Flex,
 	useToast
 } from '@chakra-ui/react';
+import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
-import { parseCookies } from 'nookies';
 import { api } from 'services/api';
 
 export default function ModalCurso(curso: Curso) {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const Toast = useToast();
-	const { 'portal-jogos.token': token } = parseCookies();
-
-	const [user] = useState<userProps | null>(jwtDecode(token) || null);
+	const myUser = Cookies.get('user');
+	const [user] = useState<userProps | null>(jwtDecode(myUser!) || null);
 
 	const subscribe = () => {
 		api.post('/cursa', {

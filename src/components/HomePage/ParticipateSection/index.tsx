@@ -39,6 +39,7 @@ export const ParticipateSection = () => {
 				alignSelf={'center'}
 				fontSize={'2rem'}
 				fontWeight={'bold'}
+				colorScheme={'purple'}
 			>
 				<Link href="/login">Colabore</Link>
 			</Button>

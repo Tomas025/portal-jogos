@@ -63,6 +63,7 @@ export const AboutSection = () => {
 				alignSelf={'center'}
 				fontSize={'2rem'}
 				fontWeight={'bold'}
+				colorScheme={'purple'}
 			>
 				<Link href={'/informations'}>Saiba Mais</Link>
 			</Button>

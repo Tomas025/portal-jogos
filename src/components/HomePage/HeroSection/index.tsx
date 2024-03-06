@@ -39,6 +39,7 @@ export const HeroSection = () => {
 					alignSelf={'center'}
 					fontSize={'2rem'}
 					fontWeight={'bold'}
+					colorScheme={'purple'}
 				>
 					<Link href="/login">Entre Agora</Link>
 				</Button>

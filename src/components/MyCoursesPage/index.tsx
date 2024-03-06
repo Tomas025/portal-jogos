@@ -7,17 +7,17 @@ import { WithSubnavigation } from 'components/NavBar';
 import { userProps } from 'components/ProfilePage/type';
 
 import { Box, Flex, Heading } from '@chakra-ui/react';
+import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
-import { parseCookies } from 'nookies';
 import { api } from 'services/api';
 
 export default function MyCoursesPage() {
-	const { 'portal-jogos.token': token } = parseCookies();
+	const myUser = Cookies.get('user');
 	const [cursos, setCursos] = useState<Curso[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
 
-	const [user] = useState<userProps | null>(jwtDecode(token) || null);
+	const [user] = useState<userProps | null>(jwtDecode(myUser!) || null);
 
 	useEffect(() => {
 		if (user) {

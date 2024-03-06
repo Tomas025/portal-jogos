@@ -6,8 +6,8 @@ import { FiThumbsDown } from 'react-icons/fi';
 import { userProps } from 'components/ProfilePage/type';
 
 import { Flex, Text, Heading, Button, useToast } from '@chakra-ui/react';
+import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
-import { parseCookies } from 'nookies';
 import { api } from 'services/api';
 
 import ComplementaryMaterial from '../ComplementaryMateial';
@@ -19,9 +19,8 @@ interface VideoSectionProps {
 }
 
 export default function VideoSection({ aula }: VideoSectionProps) {
-	const { 'portal-jogos.token': token } = parseCookies();
-
-	const [user] = useState<userProps | null>(jwtDecode(token) || null);
+	const myUser = Cookies.get('user');
+	const [user] = useState<userProps | null>(jwtDecode(myUser!) || null);
 	const toast = useToast();
 
 	const upXP = () => {

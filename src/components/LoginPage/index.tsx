@@ -16,7 +16,7 @@ import {
 	useToast
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { setCookie } from 'nookies';
+import Cookies from 'js-cookie';
 import { api } from 'services/api';
 import * as yup from 'yup';
 
@@ -49,14 +49,7 @@ export const LoginPage = () => {
 			Senha: Senha
 		})
 			.then((response) => {
-				setCookie(
-					undefined,
-					'portal-jogos.token',
-					response.data.access_token,
-					{
-						maxAge: 60 * 60 * 24 * 1 // 1 day
-					}
-				);
+				Cookies.set('user', response.data.access_token, { expires: 1 });
 				toast({
 					title: 'Login realizado com sucesso',
 					description:

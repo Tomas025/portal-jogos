@@ -29,8 +29,8 @@ import {
 	useToast
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
+import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
-import { parseCookies } from 'nookies';
 import { api } from 'services/api';
 import * as yup from 'yup';
 
@@ -49,9 +49,8 @@ const ProfileFormSchema = yup.object().shape({
 });
 
 export const ProfilePage = () => {
-	const { 'portal-jogos.token': token } = parseCookies();
-
-	const [user] = useState<userProps | null>(jwtDecode(token) || null);
+	const myUser = Cookies.get('user');
+	const [user] = useState<userProps | null>(jwtDecode(myUser!) || null);
 	const toast = useToast();
 
 	const {

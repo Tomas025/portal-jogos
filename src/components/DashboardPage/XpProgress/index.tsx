@@ -11,13 +11,12 @@ import {
 	Flex,
 	Text
 } from '@chakra-ui/react';
+import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
-import { parseCookies } from 'nookies';
 
 export default function XpProgress() {
-	const { 'portal-jogos.token': token } = parseCookies();
-
-	const [user] = useState<userProps | null>(jwtDecode(token) || null);
+	const myUser = Cookies.get('user');
+	const [user] = useState<userProps | null>(jwtDecode(myUser!) || null);
 	const [XP, setXP] = useState(0);
 	useEffect(() => {
 		setXP(user?.result?.XP || 0);

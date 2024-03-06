@@ -2,7 +2,7 @@
 import Link from 'next/link';
 
 import { Button, Flex, Text } from '@chakra-ui/react';
-import { parseCookies } from 'nookies';
+import Cookies from 'js-cookie';
 
 const navItems = [
 	{ label: 'Home', href: '/' },
@@ -17,7 +17,7 @@ const navItemsUser = [
 ];
 
 export const WithSubnavigation = () => {
-	const { 'portal-jogos.token': token } = parseCookies();
+	const myUser = Cookies.get('user');
 
 	return (
 		<Flex
@@ -31,7 +31,7 @@ export const WithSubnavigation = () => {
 				<Text as={'b'} fontSize={'2xl'}>
 					PDJ
 				</Text>
-				{token ? (
+				{myUser ? (
 					<>
 						{navItemsUser.map((navItem, index) => (
 							<Link href={navItem.href} key={index}>
@@ -49,7 +49,7 @@ export const WithSubnavigation = () => {
 					</>
 				)}
 			</Flex>
-			{!token && (
+			{!myUser && (
 				<Button
 					variant={'outline'}
 					borderColor={'#00FFF0'}
