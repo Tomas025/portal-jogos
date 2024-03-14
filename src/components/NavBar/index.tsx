@@ -21,7 +21,13 @@ const navItemsUser = [
 
 export const WithSubnavigation = () => {
 	const myUser = Cookies.get('user');
-	const user = jwtDecode<userProps>(myUser!);
+	const user = () => {
+		if (myUser) {
+			return jwtDecode<userProps>(myUser!);
+		} else {
+			return null;
+		}
+	};
 
 	return (
 		<Flex
