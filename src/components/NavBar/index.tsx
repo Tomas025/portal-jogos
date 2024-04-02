@@ -63,14 +63,14 @@ export const WithSubnavigation = () => {
 				<Flex alignItems={'center'} gap={'5'}>
 					<Box textAlign={'end'}>
 						<Text as={'b'} fontSize={'xl'}>
-							{user.result.Username}
+							{'user.result.Username'}
 						</Text>
-						<Text color={'gray'}>{user.result.Nome}</Text>
+						<Text color={'gray'}>{'user.result.Nome'}</Text>
 					</Box>
 					<Avatar
 						size={'lg'}
-						name={user.result.Nome}
-						src={user.result.UrlAvatar}
+						name={'user.result.Nome'}
+						src={'user.result.UrlAvatar'}
 					/>
 				</Flex>
 			)}
