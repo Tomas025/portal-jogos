@@ -1,5 +1,15 @@
-import ListCursosPage from 'components/ListCursosPage/lista';
+'use client';
+import { useState } from 'react';
+
+import ListCursosPage from 'components/ListCursosPage';
 
 export default function ListCursos() {
-	return <ListCursosPage />;
+	const [currentPage, setCurrentPage] = useState(1);
+
+	return (
+		<ListCursosPage
+			currentPage={currentPage}
+			setCurrentPage={setCurrentPage}
+		/>
+	);
 }

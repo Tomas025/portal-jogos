@@ -1,6 +1,6 @@
 'use client';
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useEffect } from 'react';
+import react from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 import styles from './styles.module.scss';
@@ -11,10 +11,10 @@ type PaginationProps = {
 };
 
 export function Pagination({ numPages, getCourses }: PaginationProps) {
-	const [arrayOfCurrentButtons, setArrayOfCurrentButtons] = useState<
+	const [arrayOfCurrentButtons, setArrayOfCurrentButtons] = react.useState<
 		number[]
 	>([]);
-	const [currentButton, setCurrentButton] = useState(1);
+	const [currentButton, setCurrentButton] = react.useState(1);
 
 	const pages = numPages;
 	const numberOfPages: any = [];
@@ -23,7 +23,7 @@ export function Pagination({ numPages, getCourses }: PaginationProps) {
 		numberOfPages.push(i);
 	}
 
-	useEffect(() => {
+	react.useEffect(() => {
 		let tempNumberOfPages = [...arrayOfCurrentButtons];
 		const dotsInitial = '...';
 		const dotsLeft = '... ';
