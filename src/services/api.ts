@@ -20,7 +20,9 @@ axios.interceptors.request.use(
 				axios
 					.post('/auth/RefreshToken', { access_token: myUser })
 					.then((response) => {
-						Cookies.set('user', response.data.access_token);
+						Cookies.set('user', response.data.access_token, {
+							expires: 1
+						});
 						config.headers.Authorization = `Bearer ${response.data.access_token}`;
 					})
 					.catch((error) => {
