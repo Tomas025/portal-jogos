@@ -87,7 +87,7 @@ export const ProfilePage = () => {
 		api.patch(`/pessoas/${user?.result?.Id}`, {
 			Nome: userName,
 			Username: tagName,
-			YouTube: youtube,
+			Youtube: youtube,
 			Discord: discord,
 			Linkedin: linkedin,
 			Instagram: instagram,
@@ -104,9 +104,11 @@ export const ProfilePage = () => {
 					isClosable: true
 				});
 			})
-			.catch(() => {
+			.catch((error) => {
+				console.log(error.message);
 				toast({
 					title: 'Erro ao atualizar perfil',
+					description: error.message,
 					status: 'error',
 					position: 'top',
 					duration: 3000,
