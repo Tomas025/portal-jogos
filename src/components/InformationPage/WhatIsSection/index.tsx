@@ -7,9 +7,7 @@ export const WhatIsSection = () => {
 		<Box
 			width={'100%'}
 			height={'100vh'}
-			backgroundImage={"url('/img/bgHeroSection.png')"}
-			backgroundRepeat={'no-repeat'}
-			backgroundSize={'cover'}
+			background="linear-gradient(to bottom, #000000, #401336)"
 			alignItems={'center'}
 			//backgroundColor={'#4B1A41'}
 		>

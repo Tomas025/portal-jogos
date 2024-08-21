@@ -14,7 +14,11 @@ import {
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
 
-export default function XpProgress() {
+interface xpProps {
+	xp: number;
+}
+
+export default function XpProgress(props: xpProps) {
 	const myUser = Cookies.get('user');
 	const [user] = useState<userProps | null>(jwtDecode(myUser!) || null);
 	const [XP, setXP] = useState(0);

@@ -36,7 +36,7 @@ export default function MyCoursesPage() {
 	}, [user]);
 
 	return (
-		<Box backgroundImage={"url('/img/bgHeroSection.png')"}>
+		<Box background="linear-gradient(to bottom, #000000, #401336)">
 			<WithSubnavigation />
 			<Flex
 				width={'100vw'}

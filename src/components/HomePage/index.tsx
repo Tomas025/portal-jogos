@@ -8,7 +8,7 @@ export const HomePage = () => {
 		<>
 			<HeroSection />
 			<AboutSection />
-			<TeamSection />
+			{/* <TeamSection /> */}
 			<ParticipateSection />
 		</>
 	);

@@ -30,7 +30,7 @@ export const AboutSection = () => {
 		<Flex
 			flexDir={'column'}
 			width={'100%'}
-			backgroundImage={'linear-gradient(#401336 0%, #38102f 100%)'}
+			background={'linear-gradient(#401336 0%, #38102f 100%)'}
 			paddingY={'2%'}
 			paddingInline={'8%'}
 		>

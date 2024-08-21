@@ -25,6 +25,7 @@ import * as yup from 'yup';
 
 import styles from './styles.module.scss';
 import { RegisterFormProps, types } from './type';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const RegisterFormSchema = yup.object().shape({
 	userName: yup.string().required('Nome de usuário obrigatório'),
@@ -57,6 +58,12 @@ export const RegisterPage = () => {
 	function redirect() {
 		push('/login');
 	}
+
+	const [captchaValue, setCaptchaValue] = useState(null);
+
+	const handleCaptchaChange = (value:any) => {
+		setCaptchaValue(value);
+	};
 
 	const submitForm: SubmitHandler<RegisterFormProps> = ({
 		userName,
@@ -277,6 +284,11 @@ export const RegisterPage = () => {
 							</Text>
 						) : null}
 					</FormControl>
+					<ReCAPTCHA 
+						sitekey="6Lfh1O8pAAAAAHhCHeqNpvqFCo8PTXKmdUXynMI4"
+        				onChange={handleCaptchaChange}
+            			style={{ marginTop: '20px', marginBottom: '20px'}}
+					/>
 					{isLoading == true ? (
 						<Button
 							isLoading

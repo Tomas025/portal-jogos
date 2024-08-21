@@ -21,6 +21,7 @@ import { api } from 'services/api';
 import * as yup from 'yup';
 
 import { LoginFormProps } from './type';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const LoginFormSchema = yup.object().shape({
 	Email: yup.string().required('Email obrigatório').email('Email inválido'),
@@ -32,6 +33,12 @@ export const LoginPage = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const { push } = useRouter();
 
+	const [captchaValue, setCaptchaValue] = useState(null);
+
+	const handleCaptchaChange = (value:any) => {
+		setCaptchaValue(value);
+	};
+
 	const {
 		register,
 		handleSubmit,
@@ -40,6 +47,19 @@ export const LoginPage = () => {
 
 	const submitForm: SubmitHandler<LoginFormProps> = ({ Email, Senha }) => {
 		setIsLoading(true);
+
+		if (!captchaValue) {
+			toast({
+				title: 'Por favor, resolva o CAPTCHA',
+				status: 'warning',
+				position: 'top',
+				duration: 5000,
+				isClosable: true,
+			});
+			setIsLoading(false);
+			return;
+		}
+
 		api.post('/auth/login', {
 			Email: Email,
 			Senha: Senha
@@ -157,6 +177,11 @@ export const LoginPage = () => {
 							</Text>
 						) : null}
 					</FormControl>
+					<ReCAPTCHA 
+						sitekey="6Lfh1O8pAAAAAHhCHeqNpvqFCo8PTXKmdUXynMI4"
+        				onChange={handleCaptchaChange}
+            			style={{ marginTop: '20px', marginBottom: '20px'}}
+					/>
 					<Link
 						alignSelf={'flex-end	'}
 						as={NextLink}

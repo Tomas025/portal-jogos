@@ -10,9 +10,7 @@ export const HeroSection = () => {
 	return (
 		<Box
 			width={'100%'}
-			backgroundImage={"url('/img/bgHeroSection.png')"}
-			backgroundRepeat={'no-repeat'}
-			backgroundSize={'cover'}
+			background={"linear-gradient(to bottom, #000000, #401336)"}
 		>
 			<WithSubnavigation />
 			<Flex
