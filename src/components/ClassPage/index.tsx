@@ -28,7 +28,7 @@ export default function ClassPage({ classId }: { classId: string }) {
 		<Box
 			width={'100%'}
 			height={'100vh'}
-			backgroundImage={"url('/img/bgHeroSection.png')"}
+			background={"linear-gradient(to bottom, #000000, #401336)"}
 		>
 			<Flex
 				width={'100vw'}

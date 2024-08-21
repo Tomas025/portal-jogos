@@ -46,7 +46,7 @@ export default function ListCursosPage({
 	return (
 		<Box
 			overflow="auto"
-			bgGradient="linear(to-b, rgba(88,34,80,1) 0%, rgba(105,9,121,1) 23%, rgba(99,21,129,1) 51%, rgba(69,79,167,1) 100%, rgba(0,212,255,1) 100%)"
+			background="linear-gradient(to bottom, #000000, #401336)"
 		>
 			<WithSubnavigation />
 			<Flex

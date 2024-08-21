@@ -9,7 +9,7 @@ export const ParticipateSection = () => {
 			justifyContent={'space-around'}
 			width={'100%'}
 			height={'90vh'}
-			backgroundColor={'#120E27'}
+			background={'linear-gradient(to bottom, #38102F, #000000)'}
 			paddingY={'2%'}
 			paddingInline={'8%'}
 		>

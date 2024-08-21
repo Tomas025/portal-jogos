@@ -30,7 +30,7 @@ export const LanguageSection = () => {
 		<Flex
 			flexDir={'column'}
 			width={'100%'}
-			backgroundColor={'#411237'}
+			background="linear-gradient(to bottom, #401336, #000000)"
 			paddingY={'2%'}
 			paddingInline={'8%'}
 			alignItems={'center'}
