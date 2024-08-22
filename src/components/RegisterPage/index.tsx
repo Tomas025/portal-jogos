@@ -2,6 +2,7 @@
 import NextLink from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FiUser, FiMail, FiLock, FiAtSign } from 'react-icons/fi';
 
@@ -25,7 +26,6 @@ import * as yup from 'yup';
 
 import styles from './styles.module.scss';
 import { RegisterFormProps, types } from './type';
-import ReCAPTCHA from 'react-google-recaptcha';
 
 const RegisterFormSchema = yup.object().shape({
 	userName: yup.string().required('Nome de usuário obrigatório'),
@@ -59,9 +59,11 @@ export const RegisterPage = () => {
 		push('/login');
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [captchaValue, setCaptchaValue] = useState(null);
 
-	const handleCaptchaChange = (value:any) => {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const handleCaptchaChange = (value: any) => {
 		setCaptchaValue(value);
 	};
 
@@ -284,10 +286,10 @@ export const RegisterPage = () => {
 							</Text>
 						) : null}
 					</FormControl>
-					<ReCAPTCHA 
+					<ReCAPTCHA
 						sitekey="6Lfh1O8pAAAAAHhCHeqNpvqFCo8PTXKmdUXynMI4"
-        				onChange={handleCaptchaChange}
-            			style={{ marginTop: '20px', marginBottom: '20px'}}
+						onChange={handleCaptchaChange}
+						style={{ marginTop: '20px', marginBottom: '20px' }}
 					/>
 					{isLoading == true ? (
 						<Button

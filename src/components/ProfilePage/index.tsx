@@ -2,7 +2,6 @@
 // import Image from 'next/image';
 import Link from 'next/link';
 // import { useEffect, useRef } from 'react';
-import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import {
 	FiGithub,
@@ -29,12 +28,11 @@ import {
 	useToast
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
-import Cookies from 'js-cookie';
-import { jwtDecode } from 'jwt-decode';
 import { api } from 'services/api';
+import { getToken } from 'utils/decodeToken';
 import * as yup from 'yup';
 
-import { ProfileFormProps, userProps } from './type';
+import { ProfileFormProps } from './type';
 
 const ProfileFormSchema = yup.object().shape({
 	tagName: yup.string().required('TagName obrigatório'),
@@ -49,9 +47,8 @@ const ProfileFormSchema = yup.object().shape({
 });
 
 export const ProfilePage = () => {
-	const myUser = Cookies.get('user');
-	const [user] = useState<userProps | null>(jwtDecode(myUser!) || null);
 	const toast = useToast();
+	const user = getToken();
 
 	const {
 		register,

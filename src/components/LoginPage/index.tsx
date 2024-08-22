@@ -2,6 +2,7 @@
 import NextLink from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import {
@@ -21,7 +22,6 @@ import { api } from 'services/api';
 import * as yup from 'yup';
 
 import { LoginFormProps } from './type';
-import ReCAPTCHA from 'react-google-recaptcha';
 
 const LoginFormSchema = yup.object().shape({
 	Email: yup.string().required('Email obrigatório').email('Email inválido'),
@@ -35,7 +35,8 @@ export const LoginPage = () => {
 
 	const [captchaValue, setCaptchaValue] = useState(null);
 
-	const handleCaptchaChange = (value:any) => {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const handleCaptchaChange = (value: any) => {
 		setCaptchaValue(value);
 	};
 
@@ -54,7 +55,7 @@ export const LoginPage = () => {
 				status: 'warning',
 				position: 'top',
 				duration: 5000,
-				isClosable: true,
+				isClosable: true
 			});
 			setIsLoading(false);
 			return;
@@ -177,10 +178,10 @@ export const LoginPage = () => {
 							</Text>
 						) : null}
 					</FormControl>
-					<ReCAPTCHA 
+					<ReCAPTCHA
 						sitekey="6Lfh1O8pAAAAAHhCHeqNpvqFCo8PTXKmdUXynMI4"
-        				onChange={handleCaptchaChange}
-            			style={{ marginTop: '20px', marginBottom: '20px'}}
+						onChange={handleCaptchaChange}
+						style={{ marginTop: '20px', marginBottom: '20px' }}
 					/>
 					<Link
 						alignSelf={'flex-end	'}

@@ -7,12 +7,9 @@ import {
 	BsFillHandThumbsDownFill
 } from 'react-icons/bs';
 
-import { userProps } from 'components/ProfilePage/type';
-
 import { Flex, Text, Heading, Button, useToast } from '@chakra-ui/react';
-import Cookies from 'js-cookie';
-import { jwtDecode } from 'jwt-decode';
 import { api } from 'services/api';
+import { getToken } from 'utils/decodeToken';
 
 import ComplementaryMaterial from '../ComplementaryMateial';
 import { Aula } from '../type';
@@ -23,8 +20,7 @@ interface VideoSectionProps {
 }
 
 export default function VideoSection({ aula }: VideoSectionProps) {
-	const myUser = Cookies.get('user');
-	const [user] = useState<userProps | null>(jwtDecode(myUser!) || null);
+	const user = getToken();
 	const [like, setLike] = useState(false);
 	const [dislike, setDislike] = useState(false);
 	const toast = useToast();

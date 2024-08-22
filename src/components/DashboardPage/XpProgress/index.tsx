@@ -1,8 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
 
-import { userProps } from 'components/ProfilePage/type';
-
 import {
 	Card,
 	CardBody,
@@ -11,16 +9,15 @@ import {
 	Flex,
 	Text
 } from '@chakra-ui/react';
-import Cookies from 'js-cookie';
-import { jwtDecode } from 'jwt-decode';
+import { getToken } from 'utils/decodeToken';
 
 interface xpProps {
 	xp: number;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function XpProgress(props: xpProps) {
-	const myUser = Cookies.get('user');
-	const [user] = useState<userProps | null>(jwtDecode(myUser!) || null);
+	const user = getToken();
 	const [XP, setXP] = useState(0);
 	useEffect(() => {
 		setXP(user?.result?.XP || 0);

@@ -4,20 +4,16 @@ import { useEffect, useState } from 'react';
 import { CardCursoEdit } from 'components/CardCursoEdit';
 import { Curso } from 'components/ListCursosPage/type';
 import { WithSubnavigation } from 'components/NavBar';
-import { userProps } from 'components/ProfilePage/type';
 
 import { Box, Flex, Heading } from '@chakra-ui/react';
-import Cookies from 'js-cookie';
-import { jwtDecode } from 'jwt-decode';
 import { api } from 'services/api';
+import { getToken } from 'utils/decodeToken';
 
 export default function MyCoursesPage() {
-	const myUser = Cookies.get('user');
 	const [cursos, setCursos] = useState<Curso[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
-
-	const [user] = useState<userProps | null>(jwtDecode(myUser!) || null);
+	const user = getToken();
 
 	useEffect(() => {
 		if (user) {
