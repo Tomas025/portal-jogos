@@ -10,7 +10,7 @@ export const HeroSection = () => {
 	return (
 		<Box
 			width={'100%'}
-			background={"linear-gradient(to bottom, #000000, #401336)"}
+			background={'linear-gradient(to bottom, #000000, #401336)'}
 		>
 			<WithSubnavigation />
 			<Flex

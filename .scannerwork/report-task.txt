@@ -1,0 +1,6 @@
+projectKey=NisesProject-front
+serverUrl=http://localhost:9000
+serverVersion=25.2.0.102705
+dashboardUrl=http://localhost:9000/dashboard?id=NisesProject-front
+ceTaskId=28fe2e2f-5ee6-40db-b8ab-12e035e94054
+ceTaskUrl=http://localhost:9000/api/ce/task?id=28fe2e2f-5ee6-40db-b8ab-12e035e94054
