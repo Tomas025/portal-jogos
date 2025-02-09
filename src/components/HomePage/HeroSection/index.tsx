@@ -10,9 +10,7 @@ export const HeroSection = () => {
 	return (
 		<Box
 			width={'100%'}
-			backgroundImage={"url('/img/bgHeroSection.png')"}
-			backgroundRepeat={'no-repeat'}
-			backgroundSize={'cover'}
+			background={"linear-gradient(to bottom, #000000, #401336)"}
 		>
 			<WithSubnavigation />
 			<Flex
@@ -22,12 +20,7 @@ export const HeroSection = () => {
 				flexDir={'column'}
 				justifyContent={'space-evenly'}
 			>
-				<Text
-					as={'b'}
-					color={'white'}
-					fontSize={'5.625rem'}
-					width={'50%'}
-				>
+				<Text as={'b'} color={'white'} fontSize={'4rem'} width={'50%'}>
 					Desenvolva <span className={styles.fontColor}>jogos</span>{' '}
 					incríveis e traga suas{' '}
 					<span className={styles.fontColor}>ideias</span> à vida!
@@ -37,8 +30,9 @@ export const HeroSection = () => {
 					width={'20%'}
 					height={'8vh'}
 					alignSelf={'center'}
-					fontSize={'2rem'}
+					fontSize={'1.5rem'}
 					fontWeight={'bold'}
+					colorScheme={'purple'}
 				>
 					<Link href="/login">Entre Agora</Link>
 				</Button>

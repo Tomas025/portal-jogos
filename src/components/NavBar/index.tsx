@@ -1,8 +1,8 @@
 'use client';
 import Link from 'next/link';
 
-import { Button, Flex, Text } from '@chakra-ui/react';
-import { parseCookies } from 'nookies';
+import { Avatar, Box, Button, Flex, Text } from '@chakra-ui/react';
+import { getToken } from 'utils/decodeToken';
 
 const navItems = [
 	{ label: 'Home', href: '/' },
@@ -17,7 +17,7 @@ const navItemsUser = [
 ];
 
 export const WithSubnavigation = () => {
-	const { 'portal-jogos.token': token } = parseCookies();
+	const myUser = getToken();
 
 	return (
 		<Flex
@@ -31,7 +31,7 @@ export const WithSubnavigation = () => {
 				<Text as={'b'} fontSize={'2xl'}>
 					PDJ
 				</Text>
-				{token ? (
+				{myUser ? (
 					<>
 						{navItemsUser.map((navItem, index) => (
 							<Link href={navItem.href} key={index}>
@@ -49,7 +49,22 @@ export const WithSubnavigation = () => {
 					</>
 				)}
 			</Flex>
-			{!token && (
+			{myUser && (
+				<Flex alignItems={'center'} gap={'5'}>
+					<Box textAlign={'end'}>
+						<Text as={'b'} fontSize={'xl'}>
+							{'user.result.Username'}
+						</Text>
+						<Text color={'gray'}>{'user.result.Nome'}</Text>
+					</Box>
+					<Avatar
+						size={'lg'}
+						name={'user.result.Nome'}
+						src={'user.result.UrlAvatar'}
+					/>
+				</Flex>
+			)}
+			{!myUser && (
 				<Button
 					variant={'outline'}
 					borderColor={'#00FFF0'}

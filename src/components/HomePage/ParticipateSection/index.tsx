@@ -9,13 +9,13 @@ export const ParticipateSection = () => {
 			justifyContent={'space-around'}
 			width={'100%'}
 			height={'90vh'}
-			backgroundColor={'#120E27'}
+			background={'linear-gradient(to bottom, #38102F, #000000)'}
 			paddingY={'2%'}
 			paddingInline={'8%'}
 		>
 			<Heading
 				as={'b'}
-				fontSize={'90px'}
+				fontSize={'3.5rem'}
 				color={'white'}
 				textDecoration={'underline #C329FFCC'}
 			>
@@ -23,7 +23,7 @@ export const ParticipateSection = () => {
 			</Heading>
 			<Text
 				as={'b'}
-				fontSize={'90px'}
+				fontSize={'3.5rem'}
 				color={'white'}
 				alignSelf={'center'}
 				width={'75%'}
@@ -33,12 +33,13 @@ export const ParticipateSection = () => {
 				seu curso!
 			</Text>
 			<Button
-				width={'20%'}
-				height={'7vh'}
+				width={'30%'}
+				height={'8vh'}
 				rounded={'full'}
 				alignSelf={'center'}
 				fontSize={'2rem'}
 				fontWeight={'bold'}
+				colorScheme={'purple'}
 			>
 				<Link href="/login">Colabore</Link>
 			</Button>

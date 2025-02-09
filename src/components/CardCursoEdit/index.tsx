@@ -10,8 +10,8 @@ export function CardCursoEdit({ curso }: { curso: Curso }) {
 	return (
 		<Card
 			bg={'#120E27'}
-			width={{ lg: '1591px' }}
-			height={{ lg: '226px' }}
+			width={{ lg: '80vw' }}
+			height={{ lg: '35vh' }}
 			rounded={'14px'}
 			borderTop={'34px solid #2A2156'}
 			justifyContent={'center'}
@@ -19,7 +19,7 @@ export function CardCursoEdit({ curso }: { curso: Curso }) {
 			marginTop={'20px'}
 		>
 			<CardBody
-				width={{ lg: '1591px' }}
+				width={{ lg: '80vw' }}
 				display={'flex'}
 				justifyContent={'center'}
 			>
@@ -56,7 +56,7 @@ export function CardCursoEdit({ curso }: { curso: Curso }) {
 							backgroundColor: '#00FFF0',
 							color: '#0e0b1c'
 						}}
-						width={{ lg: '18.9375rem' }}
+						width={{ lg: '22vw' }}
 						height={{ lg: '6rem' }}
 						fontSize={{ lg: '1.5rem' }}
 					>

@@ -4,20 +4,16 @@ import { useEffect, useState } from 'react';
 import { CardCursoEdit } from 'components/CardCursoEdit';
 import { Curso } from 'components/ListCursosPage/type';
 import { WithSubnavigation } from 'components/NavBar';
-import { userProps } from 'components/ProfilePage/type';
 
 import { Box, Flex, Heading } from '@chakra-ui/react';
-import { jwtDecode } from 'jwt-decode';
-import { parseCookies } from 'nookies';
 import { api } from 'services/api';
+import { getToken } from 'utils/decodeToken';
 
 export default function MyCoursesPage() {
-	const { 'portal-jogos.token': token } = parseCookies();
 	const [cursos, setCursos] = useState<Curso[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
-
-	const [user] = useState<userProps | null>(jwtDecode(token) || null);
+	const user = getToken();
 
 	useEffect(() => {
 		if (user) {
@@ -36,7 +32,7 @@ export default function MyCoursesPage() {
 	}, [user]);
 
 	return (
-		<Box backgroundImage={"url('/img/bgHeroSection.png')"}>
+		<Box background="linear-gradient(to bottom, #000000, #401336)">
 			<WithSubnavigation />
 			<Flex
 				width={'100vw'}

@@ -15,7 +15,7 @@ export const Card = ({ icon, title, description }: CardProps) => {
 				'linear-gradient(180deg, #ffffff26 29.08%, #a4329c26 97.41%);'
 			}
 			width={'25%'}
-			height={'45vh'}
+			height={'60vh'}
 			paddingInline={'1.5%'}
 			paddingY={'4%'}
 			gap={'5%'}
@@ -23,16 +23,16 @@ export const Card = ({ icon, title, description }: CardProps) => {
 			borderRadius={'10px'}
 		>
 			{icon == 'book' ? (
-				<FiBook color={'white'} fontSize={'6rem'} />
+				<FiBook color={'white'} fontSize={'4.4rem'} />
 			) : icon == 'pen' ? (
-				<FiPenTool color={'white'} fontSize={'6rem'} />
+				<FiPenTool color={'white'} fontSize={'4.4rem'} />
 			) : icon == 'airplay' ? (
-				<FiAirplay color={'white'} fontSize={'6rem'} />
+				<FiAirplay color={'white'} fontSize={'4.4rem'} />
 			) : null}
-			<Text as={'b'} fontSize={'3.125rem'} color={'#C98DF9'}>
+			<Text as={'b'} fontSize={'2rem'} color={'#C98DF9'}>
 				{title}
 			</Text>
-			<Text fontSize={'1.563rem'} color={'white'}>
+			<Text fontSize={'1.2rem'} color={'white'} lineHeight={'40px'}>
 				{description}
 			</Text>
 		</Flex>

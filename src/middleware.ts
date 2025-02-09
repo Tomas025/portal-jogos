@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { api } from 'services/api';
 
 export default function middleware(request: NextRequest) {
-	const token = request.cookies.get('portal-jogos.token')?.value;
+	const token = request.cookies.get('user')?.value;
 	const sigInURL = new URL('/login', request.url);
 
 	if (token) {

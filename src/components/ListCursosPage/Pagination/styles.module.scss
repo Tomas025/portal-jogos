@@ -1,0 +1,51 @@
+.alignContainer {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 5.3rem;
+
+    .paginationContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: .5rem 0;
+        background-color: #00ffff20;
+        // border: 1px solid #8d8d8d;
+        border-radius: 1.62rem;
+        box-shadow: 0 .25rem .25rem #00000033;;
+
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 1.75rem;
+            width: 1.75rem;
+            font-size: .75rem;
+            margin-inline: 1rem;
+            text-decoration: none;
+            transition: background-color .2s;
+            border-radius: 100%;
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: #19bcc2;
+            color: #000;
+        }
+
+        .disabled {
+            color: rgb(104, 104, 104);
+            pointer-events: none;
+        }
+
+        a:hover:not(.active) {
+            background-color: #19bcc250;
+        }
+
+        a:hover.disabled {
+            background-color: rgb(73, 73, 73);
+        }
+    }
+}

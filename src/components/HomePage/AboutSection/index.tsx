@@ -30,19 +30,19 @@ export const AboutSection = () => {
 		<Flex
 			flexDir={'column'}
 			width={'100%'}
-			backgroundImage={'linear-gradient(#401336 0%, #38102f 100%)'}
+			background={'linear-gradient(#401336 0%, #38102f 100%)'}
 			paddingY={'2%'}
 			paddingInline={'8%'}
 		>
 			<Heading
 				as={'b'}
-				fontSize={'90px'}
+				fontSize={'3.5rem'}
 				color={'white'}
 				textDecoration={'underline #C329FFCC'}
 			>
 				Sobre
 			</Heading>
-			<Text as={'b'} fontSize={'38px'} color={'white'}>
+			<Text as={'b'} fontSize={'2rem'} color={'white'}>
 				Aqui você aprenderá sobre jogos e seus processos de
 				desenvolvimento:
 			</Text>
@@ -61,8 +61,9 @@ export const AboutSection = () => {
 				height={'7vh'}
 				rounded={'full'}
 				alignSelf={'center'}
-				fontSize={'2rem'}
+				fontSize={'1.5rem'}
 				fontWeight={'bold'}
+				colorScheme={'purple'}
 			>
 				<Link href={'/informations'}>Saiba Mais</Link>
 			</Button>

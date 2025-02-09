@@ -1,8 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
 
-import { userProps } from 'components/ProfilePage/type';
-
 import {
 	Card,
 	CardBody,
@@ -11,13 +9,15 @@ import {
 	Flex,
 	Text
 } from '@chakra-ui/react';
-import { jwtDecode } from 'jwt-decode';
-import { parseCookies } from 'nookies';
+import { getToken } from 'utils/decodeToken';
 
-export default function XpProgress() {
-	const { 'portal-jogos.token': token } = parseCookies();
+interface xpProps {
+	xp: number;
+}
 
-	const [user] = useState<userProps | null>(jwtDecode(token) || null);
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default function XpProgress(props: xpProps) {
+	const user = getToken();
 	const [XP, setXP] = useState(0);
 	useEffect(() => {
 		setXP(user?.result?.XP || 0);

@@ -2,6 +2,7 @@
 import NextLink from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import {
@@ -16,7 +17,7 @@ import {
 	useToast
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { setCookie } from 'nookies';
+import Cookies from 'js-cookie';
 import { api } from 'services/api';
 import * as yup from 'yup';
 
@@ -32,9 +33,12 @@ export const LoginPage = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const { push } = useRouter();
 
-	function redirect() {
-		push('/dashboard');
-	}
+	const [captchaValue, setCaptchaValue] = useState(null);
+
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const handleCaptchaChange = (value: any) => {
+		setCaptchaValue(value);
+	};
 
 	const {
 		register,
@@ -44,19 +48,25 @@ export const LoginPage = () => {
 
 	const submitForm: SubmitHandler<LoginFormProps> = ({ Email, Senha }) => {
 		setIsLoading(true);
+
+		if (!captchaValue) {
+			toast({
+				title: 'Por favor, resolva o CAPTCHA',
+				status: 'warning',
+				position: 'top',
+				duration: 5000,
+				isClosable: true
+			});
+			setIsLoading(false);
+			return;
+		}
+
 		api.post('/auth/login', {
 			Email: Email,
 			Senha: Senha
 		})
 			.then((response) => {
-				setCookie(
-					undefined,
-					'portal-jogos.token',
-					response.data.access_token,
-					{
-						maxAge: 60 * 60 * 24 * 1 // 1 day
-					}
-				);
+				Cookies.set('user', response.data.access_token, { expires: 1 });
 				toast({
 					title: 'Login realizado com sucesso',
 					description:
@@ -67,7 +77,7 @@ export const LoginPage = () => {
 					isClosable: true
 				});
 				// setTimeout(redirect, 1000);
-				redirect();
+				push('/dashboard');
 			})
 			.catch((error) => {
 				console.log(error);
@@ -168,6 +178,11 @@ export const LoginPage = () => {
 							</Text>
 						) : null}
 					</FormControl>
+					<ReCAPTCHA
+						sitekey="6Lfh1O8pAAAAAHhCHeqNpvqFCo8PTXKmdUXynMI4"
+						onChange={handleCaptchaChange}
+						style={{ marginTop: '20px', marginBottom: '20px' }}
+					/>
 					<Link
 						alignSelf={'flex-end	'}
 						as={NextLink}

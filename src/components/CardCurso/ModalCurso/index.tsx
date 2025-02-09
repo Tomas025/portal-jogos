@@ -1,10 +1,8 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
 
 import { Curso } from 'components/ListCursosPage/type';
-import { userProps } from 'components/ProfilePage/type';
 
 import {
 	useDisclosure,
@@ -20,16 +18,13 @@ import {
 	Flex,
 	useToast
 } from '@chakra-ui/react';
-import { jwtDecode } from 'jwt-decode';
-import { parseCookies } from 'nookies';
 import { api } from 'services/api';
+import { getToken } from 'utils/decodeToken';
 
 export default function ModalCurso(curso: Curso) {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const Toast = useToast();
-	const { 'portal-jogos.token': token } = parseCookies();
-
-	const [user] = useState<userProps | null>(jwtDecode(token) || null);
+	const user = getToken();
 
 	const subscribe = () => {
 		api.post('/cursa', {
