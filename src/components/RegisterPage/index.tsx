@@ -2,7 +2,7 @@
 import NextLink from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
+// import ReCAPTCHA from 'react-google-recaptcha';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FiUser, FiMail, FiLock, FiAtSign } from 'react-icons/fi';
 
@@ -60,12 +60,12 @@ export const RegisterPage = () => {
 	}
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const [captchaValue, setCaptchaValue] = useState(null);
+	// const [captchaValue, setCaptchaValue] = useState(null);
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const handleCaptchaChange = (value: any) => {
-		setCaptchaValue(value);
-	};
+	// const handleCaptchaChange = (value: any) => {
+	// 	setCaptchaValue(value);
+	// };
 
 	const submitForm: SubmitHandler<RegisterFormProps> = ({
 		userName,
@@ -286,11 +286,11 @@ export const RegisterPage = () => {
 							</Text>
 						) : null}
 					</FormControl>
-					<ReCAPTCHA
+					{/* <ReCAPTCHA
 						sitekey="6Lfh1O8pAAAAAHhCHeqNpvqFCo8PTXKmdUXynMI4"
 						onChange={handleCaptchaChange}
 						style={{ marginTop: '20px', marginBottom: '20px' }}
-					/>
+					/> */}
 					{isLoading == true ? (
 						<Button
 							isLoading

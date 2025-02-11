@@ -2,7 +2,7 @@
 import NextLink from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
+// import ReCAPTCHA from 'react-google-recaptcha';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import {
@@ -33,12 +33,12 @@ export const LoginPage = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const { push } = useRouter();
 
-	const [captchaValue, setCaptchaValue] = useState(null);
+	// const [captchaValue, setCaptchaValue] = useState(null);
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const handleCaptchaChange = (value: any) => {
-		setCaptchaValue(value);
-	};
+	// const handleCaptchaChange = (value: any) => {
+	// 	setCaptchaValue(value);
+	// };
 
 	const {
 		register,
@@ -49,17 +49,17 @@ export const LoginPage = () => {
 	const submitForm: SubmitHandler<LoginFormProps> = ({ Email, Senha }) => {
 		setIsLoading(true);
 
-		if (!captchaValue) {
-			toast({
-				title: 'Por favor, resolva o CAPTCHA',
-				status: 'warning',
-				position: 'top',
-				duration: 5000,
-				isClosable: true
-			});
-			setIsLoading(false);
-			return;
-		}
+		// if (!captchaValue) {
+		// 	toast({
+		// 		title: 'Por favor, resolva o CAPTCHA',
+		// 		status: 'warning',
+		// 		position: 'top',
+		// 		duration: 5000,
+		// 		isClosable: true
+		// 	});
+		// 	setIsLoading(false);
+		// 	return;
+		// }
 
 		api.post('/auth/login', {
 			Email: Email,
@@ -178,11 +178,11 @@ export const LoginPage = () => {
 							</Text>
 						) : null}
 					</FormControl>
-					<ReCAPTCHA
+					{/* <ReCAPTCHA
 						sitekey="6Lfh1O8pAAAAAHhCHeqNpvqFCo8PTXKmdUXynMI4"
 						onChange={handleCaptchaChange}
 						style={{ marginTop: '20px', marginBottom: '20px' }}
-					/>
+					/> */}
 					<Link
 						alignSelf={'flex-end	'}
 						as={NextLink}
